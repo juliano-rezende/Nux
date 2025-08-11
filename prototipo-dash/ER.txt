@@ -1,0 +1,376 @@
+erDiagram
+    %% ===========================
+    %% ENTIDADES PRINCIPAIS
+    %% ===========================
+
+    empresa {
+      int id PK
+      string nome
+      string cnpj
+      string telefone
+      string email
+      string endereco
+      json configuracoes
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    usuario {
+      int id PK
+      int empresa_id FK
+      string nome
+      string email
+      string senha_hash
+      int cargo_id FK
+      bool ativo
+      string telefone
+      datetime ultimo_login
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    cargo {
+      int id PK
+      int empresa_id FK
+      string nome
+      string descricao
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    permissao {
+      int id PK
+      string chave         %% ex: "orders.create", "kitchen.view"
+      string descricao
+    }
+
+    cargo_permissao {
+      int id PK
+      int cargo_id FK
+      int permissao_id FK
+    }
+
+    cliente {
+      int id PK
+      int empresa_id FK
+      string nome
+      string email
+      string telefone
+      string document      %% cpf/cnpj
+      json endereco        %% pode armazenar múltiplos endereços
+      int pontos_fidelidade
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    dispositivo {
+      int id PK
+      int empresa_id FK
+      string identificador    %% ex: tablet-01, totem-01
+      string tipo             %% "totem","tablet","impressora","kds"
+      int mesa_id FK NULLABLE
+      string status           %% online/offline
+      datetime registrado_em
+      datetime atualizado_em
+    }
+
+    mesa {
+      int id PK
+      int empresa_id FK
+      string codigo           %% "M01", "M02"
+      int capacidade
+      string zona            %% "externo","salão1"
+      string status          %% livre, ocupada, reservada, bloqueada
+      json layout_pos       %% coordenadas para mapa visual
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    reserva {
+      int id PK
+      int empresa_id FK
+      int cliente_id FK
+      int mesa_id FK NULLABLE
+      datetime data_inicio
+      datetime data_fim
+      string status         %% pendente, confirmada, cancelada, concluida
+      string observacao
+      datetime criado_em
+    }
+
+    comanda {
+      int id PK
+      int empresa_id FK
+      string codigo
+      int mesa_id FK NULLABLE
+      int cliente_id FK NULLABLE
+      int garcom_id FK NULLABLE    %% usuario_id
+      string status               %% aberta, em_preparo, finalizada, cancelada
+      decimal total
+      decimal descontos
+      decimal gorjeta
+      datetime aberto_em
+      datetime fechado_em NULLABLE
+      datetime atualizado_em
+    }
+
+    item_comanda {
+      int id PK
+      int comanda_id FK
+      int produto_id FK
+      int quantidade
+      decimal preco_unitario
+      decimal subtotal
+      string observacao
+      string status_item        %% pendente, enviado_cozinha, em_preparo, pronto, entregue, cancelado
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    produto {
+      int id PK
+      int empresa_id FK
+      string nome
+      string sku
+      string descricao
+      decimal preco
+      int categoria_id FK
+      bool ativo
+      bool exige_preparo       %% vai para cozinha?
+      string imagem_url
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    categoria_produto {
+      int id PK
+      int empresa_id FK
+      string nome
+      string descricao
+      datetime criado_em
+    }
+
+    receita_produto {
+      int id PK
+      int produto_id FK
+      int ingrediente_id FK
+      decimal quantidade
+      string unidade
+    }
+
+    ingrediente {
+      int id PK
+      int empresa_id FK
+      string nome
+      string unidade_base      %% ex: kg, g, ml, un
+      decimal custo_unitario
+      datetime criado_em
+    }
+
+    estoque_item {
+      int id PK
+      int empresa_id FK
+      int ingrediente_id FK
+      decimal quantidade
+      string unidade
+      decimal estoque_minimo
+      datetime ultima_atualizacao
+    }
+
+    movimentacao_estoque {
+      int id PK
+      int empresa_id FK
+      int estoque_item_id FK
+      string tipo            %% entrada, saida, ajuste
+      decimal quantidade
+      string referencia_tipo %% purchase, recipe_use, manual
+      int referencia_id NULLABLE
+      string observacao
+      int usuario_id FK NULLABLE
+      datetime criado_em
+    }
+
+    fornecedor {
+      int id PK
+      int empresa_id FK
+      string nome
+      string cnpj
+      string telefone
+      string email
+      json endereco
+      datetime criado_em
+    }
+
+    compra {
+      int id PK
+      int empresa_id FK
+      int fornecedor_id FK
+      decimal valor_total
+      string status        %% rascunho, solicitado, recebido, pago, cancelado
+      datetime criado_em
+      datetime recebido_em NULLABLE
+    }
+
+    compra_item {
+      int id PK
+      int compra_id FK
+      int ingrediente_id FK
+      decimal quantidade
+      decimal preco_unitario
+    }
+
+    kitchen_ticket {
+      int id PK
+      int empresa_id FK
+      int comanda_id FK
+      int item_comanda_id FK
+      int prioridade DEFAULT 0
+      string status        %% recebido, em_preparo, pronto, cancelado
+      datetime criado_em
+      datetime atualizado_em
+    }
+
+    pagamento {
+      int id PK
+      int empresa_id FK
+      int comanda_id FK NULLABLE
+      int pedido_delivery_id FK NULLABLE
+      decimal valor
+      int forma_pagamento_id FK
+      string referencia_externa NULLABLE
+      string status         %% pendente, confirmado, estornado
+      decimal troco         %% se pagamento em dinheiro
+      decimal desconto
+      datetime criado_em
+    }
+
+    forma_pagamento {
+      int id PK
+      string nome           %% dinheiro, cartão, pix, voucher
+      json config           %% se necessário (p.ex. gateway)
+    }
+
+    fechamento_caixa {
+      int id PK
+      int empresa_id FK
+      int usuario_id FK
+      datetime data_turno_inicio
+      datetime data_turno_fim
+      decimal valor_abertura
+      decimal valor_fechamento
+      json resumo_pagamentos
+      datetime criado_em
+    }
+
+    pedido_delivery {
+      int id PK
+      int empresa_id FK
+      int cliente_id FK
+      string endereco_entrega
+      decimal taxa_entrega
+      string status         %% recebido, em_preparo, em_rota, entregue, cancelado
+      decimal total
+      datetime criado_em
+    }
+
+    entrega {
+      int id PK
+      int pedido_delivery_id FK
+      int entregador_id FK NULLABLE  %% usuario quem fez a entrega
+      datetime saida_prevista
+      datetime saida_real
+      datetime entregue_em NULLABLE
+      string veiculo_info NULLABLE
+    }
+
+    audit_log {
+      int id PK
+      int empresa_id FK
+      int usuario_id FK NULLABLE
+      string entidade        %% tabela afetada
+      int entidade_id NULLABLE
+      string acao            %% create, update, delete
+      json dados_anteriores NULLABLE
+      json dados_novos NULLABLE
+      string ip_address NULLABLE
+      datetime criado_em
+    }
+
+    dashboard_log {
+      int id PK
+      int empresa_id FK
+      string tipo_evento
+      json dados
+      datetime criado_em
+    }
+
+    notification {
+      int id PK
+      int empresa_id FK
+      int usuario_id FK NULLABLE
+      string canal         %% email, whatsapp, push
+      string tipo
+      json payload
+      string status        %% pending, sent, failed
+      datetime criado_em
+    }
+
+    setting {
+      int id PK
+      int empresa_id FK
+      string chave
+      string valor
+      datetime atualizado_em
+    }
+
+    %% ===========================
+    %% RELACIONAMENTOS
+    %% ===========================
+    empresa ||--o{ usuario : possui
+    empresa ||--o{ cargo : possui
+    empresa ||--o{ cliente : possui
+    empresa ||--o{ mesa : possui
+    empresa ||--o{ produto : possui
+    empresa ||--o{ ingrediente : possui
+    empresa ||--o{ estoque_item : possui
+    empresa ||--o{ fornecedor : possui
+    empresa ||--o{ compra : possui
+    empresa ||--o{ comand a : possui
+    empresa ||--o{ kitchen_ticket : possui
+    empresa ||--o{ dashboard_log : possui
+    empresa ||--o{ setting : possui
+
+    cargo ||--o{ usuario : define
+    cargo ||--o{ cargo_permissao : possui
+    permissao ||--o{ cargo_permissao : pertence
+
+    usuario ||--o{ comanda : abre
+    usuario ||--o{ fechamento_caixa : realiza
+    usuario ||--o{ movimentacao_estoque : registra
+    usuario ||--o{ audit_log : registra
+    usuario ||--o{ notification : recebe
+
+    cliente ||--o{ comanda : associa
+    cliente ||--o{ pedido_delivery : faz
+    cliente ||--o{ reserva : realiza
+
+    mesa ||--o{ comanda : recebe
+    mesa ||--o{ reserva : pode_ser_reservada
+
+    comanda ||--o{ item_comanda : contem
+    item_comanda ||--o{ kitchen_ticket : gera
+
+    produto ||--o{ item_comanda : referenciado
+    produto ||--o{ receita_produto : referencia
+    ingrediente ||--o{ receita_produto : referencia
+    ingrediente ||--o{ estoque_item : controla
+    estoque_item ||--o{ movimentacao_estoque : registra
+
+    fornecedor ||--o{ compra : fornece
+    compra ||--o{ compra_item : contem
+
+    comanda ||--o{ pagamento : gera
+    pedido_delivery ||--o{ pagamento : pode_gerar
+    pedido_delivery ||--o{ entrega : contem
+
+    audit_log ||--o{ usuario : registrado_por

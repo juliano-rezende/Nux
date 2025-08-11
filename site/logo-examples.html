@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUX Logo - Exemplos de Uso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f9fafb;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+        
+        .logo-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f97316;
+            padding-bottom: 0.5rem;
+        }
+        
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .logo-item {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .logo-item h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-item p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .usage-item {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #f97316;
+        }
+        
+        .usage-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .usage-item ul {
+            list-style: none;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .usage-item li {
+            margin-bottom: 0.25rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .usage-item li::before {
+            content: "•";
+            color: #f97316;
+            position: absolute;
+            left: 0;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        
+        .color-item {
+            text-align: center;
+        }
+        
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .color-blue {
+            background: #1e3a8a;
+        }
+        
+        .color-orange {
+            background: #f97316;
+        }
+        
+        .color-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .usage-examples {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NUX Logo - Exemplos de Uso</h1>
+            <p>Versões e aplicações do logo moderno e tecnológico para gestão de restaurantes</p>
+        </div>
+        
+        <!-- Versão Completa -->
+        <div class="logo-section">
+            <h2>Versão Completa (Símbolo + Texto)</h2>
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <h3>Logo Principal</h3>
+                    <img src="logo-nux.svg" alt="NUX Logo Completo">
+                    <p>Versão completa com símbolo circular e texto "NUX". Ideal para headers, documentos oficiais e apresentações.</p>
+                    <div class="usage-examples">
+                        <div class="usage-item">
+                            <h4>Uso Recomendado</h4>
+                            <ul>
+                                <li>Header do website</li>
+                                <li>Documentos oficiais</li>
+                                <li>Apresentações</li>
+                                <li>Material promocional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Versão Símbolo -->
+        <div class="logo-section">
+            <h2>Versão Símbolo</h2>
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <h3>Símbolo Circular</h3>
+                    <img src="logo-symbol.svg" alt="NUX Símbolo">
+                    <p>Símbolo independente com garfo estilizado e elementos digitais. Perfeito para favicons e aplicativos móveis.</p>
+                    <div class="usage-examples">
+                        <div class="usage-item">
+                            <h4>Uso Recomendado</h4>
+                            <ul>
+                                <li>Favicon</li>
+                                <li>Ícones de aplicativo</li>
+                                <li>Redes sociais</li>
+                                <li>Elementos pequenos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logo-item">
+                    <h3>Símbolo Alternativo</h3>
+                    <img src="logo-symbol-alt.svg" alt="NUX Símbolo Alternativo">
+                    <p>Versão alternativa com frame digital e elementos de conexão. Design mais tecnológico e moderno.</p>
+                    <div class="usage-examples">
+                        <div class="usage-item">
+                            <h4>Uso Recomendado</h4>
+                            <ul>
+                                <li>Contextos tecnológicos</li>
+                                <li>Interface digital</li>
+                                <li>Elementos interativos</li>
+                                <li>Versão alternativa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Versão Texto -->
+        <div class="logo-section">
+            <h2>Versão Texto</h2>
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <h3>Logo Textual</h3>
+                    <img src="logo-text.svg" alt="NUX Texto">
+                    <p>Versão apenas com texto "NUX" e elementos decorativos. Ideal para assinaturas de email e documentos simples.</p>
+                    <div class="usage-examples">
+                        <div class="usage-item">
+                            <h4>Uso Recomendado</h4>
+                            <ul>
+                                <li>Assinaturas de email</li>
+                                <li>Documentos simples</li>
+                                <li>Contextos informais</li>
+                                <li>Espaços limitados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Paleta de Cores -->
+        <div class="logo-section">
+            <h2>Paleta de Cores</h2>
+            <div class="color-palette">
+                <div class="color-item">
+                    <div class="color-swatch color-blue"></div>
+                    <div class="color-text">Azul Profundo<br>#1E3A8A</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch color-orange"></div>
+                    <div class="color-text">Laranja<br>#F97316</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: #6b7280; font-size: 0.875rem;">
+                As cores foram escolhidas para transmitir confiança (azul) e energia (laranja), 
+                combinando profissionalismo com inovação.
+            </p>
+        </div>
+        
+        <!-- Especificações Técnicas -->
+        <div class="logo-section">
+            <h2>Especificações Técnicas</h2>
+            <div class="usage-examples">
+                <div class="usage-item">
+                    <h4>Tipografia</h4>
+                    <ul>
+                        <li>Família: Inter</li>
+                        <li>Peso: 700 (Bold)</li>
+                        <li>Tamanho: 32px (completo) / 48px (texto)</li>
+                        <li>Cor: #1E3A8A</li>
+                    </ul>
+                </div>
+                
+                <div class="usage-item">
+                    <h4>Dimensões</h4>
+                    <ul>
+                        <li>Versão Completa: 200x60px</li>
+                        <li>Símbolo: 80x80px</li>
+                        <li>Texto: 200x60px</li>
+                        <li>Mínimo: 120x36px</li>
+                    </ul>
+                </div>
+                
+                <div class="usage-item">
+                    <h4>Formato</h4>
+                    <ul>
+                        <li>SVG vetorial</li>
+                        <li>Escalável sem perda</li>
+                        <li>Otimizado para web</li>
+                        <li>Compatível com todos os navegadores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
