@@ -1,6 +1,6 @@
 ## Visão Geral do Projeto Frontend
 
-Este projeto é uma aplicação frontend construída com **Next.js**, bootstrapped via `create-next-app`, e projetado para operar **exclusivamente no lado do cliente (Client-Side Rendering)**. A arquitetura foi pensada para **não depender de um servidor back-end** para sua execução, permitindo a **geração de arquivos estáticos (HTML, CSS, JavaScript)**. Isso o torna ideal para **hospedagem em qualquer serviço de CDN, plataforma de deploy estático ou servidor web tradicional**, otimizando a performance e simplificando a infraestrutura de deployment.
+Este projeto é uma aplicação frontend construída com **Next.js**, bootstrapped via `create-next-app`, e projetado para operar **exclusivamente no lado do cliente (Client-Side Rendering)**. A arquitetura foi pensada para **não depender de um servidor server-side** para sua execução, permitindo a **geração de arquivos estáticos (HTML, CSS, JavaScript)**. Isso o torna ideal para **hospedagem em qualquer serviço de CDN, plataforma de deploy estático ou servidor web tradicional**, otimizando a performance e simplificando a infraestrutura de deployment.
 
 A base do frontend é robusta e moderna, utilizando **Chakra UI** para uma experiência de usuário flexível e rica.
 
