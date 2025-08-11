@@ -1,0 +1,272 @@
+/* Otimizações específicas para diferentes dispositivos */
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 480px) {
+    /* Aumentar tamanho dos botões para touch */
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+        min-height: 48px;
+        padding: 0.875rem 1.75rem;
+        font-size: 1rem;
+    }
+    
+    /* Aumentar espaçamento entre elementos */
+    .hero-buttons {
+        gap: 1.5rem;
+    }
+    
+    /* Otimizar navegação mobile */
+    .nav-menu.active {
+        padding: 1.5rem;
+    }
+    
+    .nav-menu.active li {
+        margin-bottom: 1rem;
+    }
+    
+    .nav-menu.active a {
+        font-size: 1.125rem;
+        padding: 1rem 0;
+        display: block;
+    }
+    
+    /* Aumentar área de toque para ícones */
+    .benefit-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .benefit-icon i {
+        font-size: 2.5rem;
+    }
+}
+
+/* ===== TABLET OPTIMIZATIONS ===== */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Layout otimizado para tablet */
+    .hero-container {
+        gap: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    /* Cards com melhor espaçamento */
+    .benefit-card,
+    .pricing-card,
+    .testimonial-card {
+        padding: 2.5rem;
+    }
+    
+    /* Navegação tablet */
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* ===== TOTEM/KIOSK MODE ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Modo totem - interface otimizada para touch */
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+        min-height: 56px;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+        border-radius: 12px;
+    }
+    
+    /* Aumentar tamanho dos elementos interativos */
+    .nav-menu a {
+        font-size: 1.2rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .benefit-icon {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .benefit-icon i {
+        font-size: 3rem;
+    }
+    
+    /* Cards maiores para totem */
+    .benefit-card,
+    .pricing-card,
+    .testimonial-card {
+        padding: 3rem;
+        border-radius: 20px;
+    }
+    
+    /* Mockup maior para totem */
+    .mockup {
+        transform: scale(1.1);
+    }
+}
+
+/* ===== LARGE SCREEN OPTIMIZATIONS ===== */
+@media (min-width: 1025px) {
+    /* Otimizações para telas grandes */
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-header h2 {
+        font-size: 3rem;
+    }
+    
+    /* Layout em grid para telas grandes */
+    .benefits-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (hover: none) and (pointer: coarse) {
+    /* Otimizações para dispositivos touch */
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-outline:hover {
+        transform: none;
+    }
+    
+    .benefit-card:hover,
+    .pricing-card:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+    
+    /* Aumentar área de toque */
+    .nav-menu a,
+    .sidebar-item,
+    .order-item {
+        min-height: 44px;
+    }
+    
+    /* Feedback visual para touch */
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-outline:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ===== HIGH DPI DISPLAYS ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Otimizações para telas de alta resolução */
+    .mockup {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .benefit-card,
+    .pricing-card,
+    .testimonial-card {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+@media (prefers-reduced-motion: reduce) {
+    /* Reduzir animações para usuários que preferem */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .mockup {
+        transform: none;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1a202c;
+        --neutral-50: #2d3748;
+        --neutral-100: #4a5568;
+        --neutral-200: #718096;
+        --neutral-300: #a0aec0;
+        --neutral-400: #cbd5e0;
+        --neutral-500: #e2e8f0;
+        --neutral-600: #edf2f7;
+        --neutral-700: #f7fafc;
+        --neutral-800: #ffffff;
+        --neutral-900: #ffffff;
+    }
+    
+    body {
+        background-color: var(--white);
+        color: var(--neutral-700);
+    }
+    
+    .header {
+        background: rgba(26, 32, 44, 0.95);
+        border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    .nav-menu a {
+        color: var(--neutral-400);
+    }
+    
+    .nav-menu a:hover {
+        color: var(--neutral-600);
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    /* Estilos para impressão */
+    .header,
+    .nav,
+    .nav-buttons,
+    .nav-toggle,
+    .hero-buttons,
+    .cta,
+    .footer {
+        display: none;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        color: #000;
+    }
+    
+    .benefit-card,
+    .pricing-card,
+    .testimonial-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .mockup {
+        transform: none;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}

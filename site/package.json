@@ -1,0 +1,36 @@
+{
+  "name": "nux-platform",
+  "version": "1.0.0",
+  "description": "Plataforma SaaS moderna para gestão de restaurantes, lanchonetes e cafeterias",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "dev": "npx live-server --port=3000 --open=/",
+    "build": "echo 'Build completed'",
+    "deploy": "echo 'Deploy completed'"
+  },
+  "keywords": [
+    "restaurant",
+    "management",
+    "saas",
+    "platform",
+    "food-service",
+    "pos",
+    "inventory",
+    "delivery"
+  ],
+  "author": "NUX Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/nux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seu-usuario/nux/issues"
+  },
+  "homepage": "https://nux.com.br"
+}

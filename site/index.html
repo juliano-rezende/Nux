@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUX - Tecnologia para servir melhor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo-nux.svg" alt="NUX Logo" class="logo-img">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#beneficios">Benefícios</a></li>
+                    <li><a href="#demo">Demonstração</a></li>
+                    <li><a href="#precos">Preços</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Entrar</button>
+                    <button class="btn-primary">Experimentar Grátis</button>
+                </div>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span class="badge-text">Plataforma #1 em Gestão de Negocios</span>
+                </div>
+                <h1 class="hero-title">
+                    Tecnologia para <span class="highlight">servir melhor</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A plataforma completa de gestão para restaurantes, lanchonetes e cafeterias. 
+                    Simplifique seus processos, aumente seus lucros e revolucione seu negócio com a NUX.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Experimentar Grátis
+                    </button>
+                    <button class="btn-outline btn-large">
+                        <i class="fas fa-play"></i>
+                        Ver Demonstração
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Restaurantes</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Pedidos/mês</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-text">Confiam na NUX:</div>
+                    <div class="trust-logos">
+                        <div class="trust-logo">🍕</div>
+                        <div class="trust-logo">🍔</div>
+                        <div class="trust-logo">☕</div>
+                        <div class="trust-logo">🍰</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="mockup-container">
+                    <div class="mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="mockup-title">NUX Dashboard</div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-sidebar">
+                                <div class="sidebar-item active">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Pedidos</span>
+                                </div>
+                                <div class="sidebar-item">
+                                    <i class="fas fa-chair"></i>
+                                    <span>Mesas</span>
+                                </div>
+                                <div class="sidebar-item">
+                                    <i class="fas fa-box"></i>
+                                    <span>Estoque</span>
+                                </div>
+                                <div class="sidebar-item">
+                                    <i class="fas fa-motorcycle"></i>
+                                    <span>Delivery</span>
+                                </div>
+                                <div class="sidebar-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Relatórios</span>
+                                </div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-header-bar">
+                                    <h3>Pedidos Ativos</h3>
+                                    <span class="badge">12</span>
+                                </div>
+                                <div class="mockup-orders">
+                                    <div class="order-item">
+                                        <div class="order-info">
+                                            <span class="order-number">#1234</span>
+                                            <span class="order-time">15:30</span>
+                                        </div>
+                                        <div class="order-items">
+                                            <span>2x Hambúrguer</span>
+                                            <span>1x Batata Frita</span>
+                                        </div>
+                                        <div class="order-status pending">Preparando</div>
+                                    </div>
+                                    <div class="order-item">
+                                        <div class="order-info">
+                                            <span class="order-number">#1235</span>
+                                            <span class="order-time">15:25</span>
+                                        </div>
+                                        <div class="order-items">
+                                            <span>1x Pizza Margherita</span>
+                                            <span>2x Refrigerante</span>
+                                        </div>
+                                        <div class="order-status ready">Pronto</div>
+                                    </div>
+                                    <div class="order-item">
+                                        <div class="order-info">
+                                            <span class="order-number">#1236</span>
+                                            <span class="order-time">15:20</span>
+                                        </div>
+                                        <div class="order-items">
+                                            <span>1x Salada Caesar</span>
+                                            <span>1x Água</span>
+                                        </div>
+                                        <div class="order-status pending">Preparando</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-floating-card">
+                        <div class="floating-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="floating-card-content">
+                            <div class="floating-card-title">Vendas Hoje</div>
+                            <div class="floating-card-value">R$ 2.847</div>
+                            <div class="floating-card-change positive">+12.5%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Por que escolher a NUX?</h2>
+                <p>Tudo que você precisa para gerenciar seu negócio em uma única plataforma</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Gestão de Pedidos</h3>
+                    <p>Controle total dos pedidos em tempo real, desde a entrada até a entrega. Interface intuitiva para sua equipe.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3>Controle de Mesas</h3>
+                    <p>Gerencie ocupação, reservas e status das mesas. Visualize o layout do seu estabelecimento em tempo real.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Gestão de Estoque</h3>
+                    <p>Controle automático de estoque, alertas de reposição e relatórios detalhados para evitar desperdícios.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3>Delivery Integrado</h3>
+                    <p>Integração com principais plataformas de delivery. Centralize todos os pedidos em um só lugar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demonstração Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h2>Veja a NUX em ação</h2>
+                    <p>Descubra como nossa plataforma pode transformar a gestão do seu restaurante. Interface moderna, funcionalidades poderosas e resultados reais.</p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i> Interface intuitiva e responsiva</li>
+                        <li><i class="fas fa-check"></i> Relatórios em tempo real</li>
+                        <li><i class="fas fa-check"></i> Integração com múltiplos canais</li>
+                        <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                    </ul>
+                    <button class="btn-primary">Agendar Demonstração</button>
+                </div>
+                <div class="demo-video">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play"></i>
+                        <span>Assista ao vídeo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços Section -->
+    <section id="precos" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planos que cabem no seu bolso</h2>
+                <p>Escolha o plano ideal para o tamanho do seu negócio</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="amount">99</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Até 5 usuários</li>
+                        <li><i class="fas fa-check"></i> Gestão de pedidos</li>
+                        <li><i class="fas fa-check"></i> Controle de mesas</li>
+                        <li><i class="fas fa-check"></i> Relatórios básicos</li>
+                        <li><i class="fas fa-check"></i> Suporte por email</li>
+                    </ul>
+                    <button class="btn-outline">Começar Agora</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Mais Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="amount">199</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Até 15 usuários</li>
+                        <li><i class="fas fa-check"></i> Gestão de pedidos</li>
+                        <li><i class="fas fa-check"></i> Controle de mesas</li>
+                        <li><i class="fas fa-check"></i> Gestão de estoque</li>
+                        <li><i class="fas fa-check"></i> Delivery integrado</li>
+                        <li><i class="fas fa-check"></i> Relatórios avançados</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                    </ul>
+                    <button class="btn-primary">Começar Agora</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="amount">399</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Usuários ilimitados</li>
+                        <li><i class="fas fa-check"></i> Todas as funcionalidades</li>
+                        <li><i class="fas fa-check"></i> Múltiplas unidades</li>
+                        <li><i class="fas fa-check"></i> API personalizada</li>
+                        <li><i class="fas fa-check"></i> Treinamento dedicado</li>
+                        <li><i class="fas fa-check"></i> Gerente de conta</li>
+                    </ul>
+                    <button class="btn-outline">Falar com Vendas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>O que nossos clientes dizem</h2>
+                <p>Histórias reais de restaurantes que transformaram seus negócios com a NUX</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A NUX revolucionou a gestão do nosso restaurante. Conseguimos reduzir o tempo de atendimento em 40% e aumentar nossa receita em 25% no primeiro mês."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria Silva</h4>
+                            <span>Proprietária - Restaurante Sabor & Arte</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A integração com delivery foi fundamental para nosso crescimento. Agora centralizamos tudo em uma plataforma e nossa operação ficou muito mais eficiente."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>João Santos</h4>
+                            <span>Gerente - Lanchonete Express</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"O controle de estoque automático nos ajudou a reduzir desperdícios em 60%. A NUX pagou por si mesma em apenas 2 meses de uso."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Costa</h4>
+                            <span>Diretora - Cafeteria Aroma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para transformar seu restaurante?</h2>
+                <p>Junte-se a centenas de restaurantes que já escolheram a NUX</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-large">Experimentar Grátis</button>
+                    <button class="btn-outline btn-large">Agendar Demonstração</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo-nux.svg" alt="NUX Logo" class="footer-logo-img">
+                        <p>Tecnologia para servir melhor</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#">Funcionalidades</a></li>
+                        <li><a href="#">Preços</a></li>
+                        <li><a href="#">Demonstração</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Imprensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                        <p><i class="fas fa-envelope"></i> contato@nux.com.br</p>
+                        <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NUX. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
