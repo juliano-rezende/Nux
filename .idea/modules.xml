@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Nux - Sass Gastronomico.iml" filepath="$PROJECT_DIR$/.idea/Nux - Sass Gastronomico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Nux.iml" filepath="$PROJECT_DIR$/.idea/Nux.iml" />
     </modules>
   </component>
 </project>

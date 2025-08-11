@@ -1,6 +1,6 @@
-"use client"; 
+"use client";
 
-import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text } from "@chakra-ui/react"; 
+import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text } from "@chakra-ui/react";
 import { useTheme } from "@/context/ThemeContext";
 import { useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from 'react';
@@ -21,7 +21,6 @@ export default function DashboardPage() {
 
   //const { theme, toggleTheme } = useTheme();
   const [userName, setUserName] = useState<string>('John Doe');
-  
 
   const {
     theme,
@@ -34,8 +33,8 @@ export default function DashboardPage() {
 
 
   return (
-    <Flex 
-      bg={theme.colors.color1} 
+    <Flex
+      bg={theme.colors.color1}
       w={"100%"}
       h={"100%"}
       flexDirection="row">
@@ -53,11 +52,11 @@ export default function DashboardPage() {
             <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
               <BiSolidCoffeeAlt/>
             </Icon>
-    
+
             <Text
                 fontFamily="'Inter Variable', sans-serif"
                 fontWeight="900"
-                fontSize={["32px", "36px", "40px"]} 
+                fontSize={["32px", "36px", "40px"]}
                 color={theme.colors.color7}
               > NUX</Text>
           </Flex>
@@ -65,8 +64,8 @@ export default function DashboardPage() {
           <Flex
             w="100%"
             flexGrow={10}
-            justifyContent="center"> 
-              
+            justifyContent="center">
+
           </Flex>
 
           <Flex
@@ -78,7 +77,7 @@ export default function DashboardPage() {
             alignItems="end"
             justifyContent="left">
 
-              
+
           </Flex>
         </Flex>
 
@@ -103,7 +102,7 @@ export default function DashboardPage() {
                 pl="20px"
                 bg={theme.colors.color0}
                 justifyContent="center"
-                alignItems="center"> 
+                alignItems="center">
 
                 <Drawer.Root placement={"start"}>
                   <Drawer.Trigger asChild>
@@ -115,7 +114,7 @@ export default function DashboardPage() {
                     <Drawer.Backdrop />
                     <Drawer.Positioner>
                       <Drawer.Content>
-                        
+
                         <Drawer.Body p="0px">
                           <Flex
                             h="100%"
@@ -139,7 +138,7 @@ export default function DashboardPage() {
                                   color={theme.colors.onColor1}
                                 > Coffe Project</Text>
                             </Flex>
-                          </Flex> 
+                          </Flex>
                         </Drawer.Body>
                         <Drawer.CloseTrigger asChild>
                           <CloseButton size="sm" bg={theme.colors.color3} color={theme.colors.onColor3}/>
@@ -149,9 +148,9 @@ export default function DashboardPage() {
                   </Portal>
                 </Drawer.Root>
 
-                
+
               </Flex>
-            
+
               <Text
                 //fontFamily="'Inter Variable', sans-serif"
                 //fontWeight="500"
@@ -178,15 +177,15 @@ export default function DashboardPage() {
                           <Popover.Arrow />
                           <Popover.Body>
 
-                            <Popover.Title 
-                              fontFamily="'Inter Variable', sans-serif" 
+                            <Popover.Title
+                              fontFamily="'Inter Variable', sans-serif"
                               color={theme.colors.onColor4}
                               fontSize="20px"
                               textAlign="center"
                               fontWeight="600">
                               Fazer Login
                             </Popover.Title>
-                            
+
 
                             <TextP color={theme.colors.onColor4} mt={6}>Nome de usuário:</TextP>
                             <Input
@@ -200,16 +199,16 @@ export default function DashboardPage() {
                               borderColor={theme.colors.color1}
                               placeholder="Digite seu nome de usuário"
                               _placeholder={{
-                                color: theme.colors.color5,  
-                                opacity: 1                      
+                                color: theme.colors.color5,
+                                opacity: 1
                               }}
-                              focusVisibleRing="outside"                
-                              focusRingColor={theme.colors.color6}              
-                              focusRingWidth="0px"                      
-                              focusRingStyle="none"                  
+                              focusVisibleRing="outside"
+                              focusRingColor={theme.colors.color6}
+                              focusRingWidth="0px"
+                              focusRingStyle="none"
                             />
 
-                          
+
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Senha:</TextP>
                             <Input
@@ -223,28 +222,28 @@ export default function DashboardPage() {
                               borderColor={theme.colors.color1}
                               placeholder="Digite sua senha"
                               _placeholder={{
-                                color: theme.colors.color5,  
-                                opacity: 1                      
+                                color: theme.colors.color5,
+                                opacity: 1
                               }}
-                              focusVisibleRing="outside"                
-                              focusRingColor={theme.colors.color6}              
-                              focusRingWidth="0px"                      
+                              focusVisibleRing="outside"
+                              focusRingColor={theme.colors.color6}
+                              focusRingWidth="0px"
                               focusRingStyle="none" />
 
 
                               <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema Atual</TextP>
                               <NativeSelect.Root size="md" mt="8px">
-                                <NativeSelect.Field 
+                                <NativeSelect.Field
                                   onChange={(e) => setPaletteName(e.target.value)}
                                   value={paletteName}
                                   fontSize="16px"
                                   borderRadius="6px"
-                                  color={theme.colors.onColor4} 
-                                  bg={theme.colors.color4} 
+                                  color={theme.colors.onColor4}
+                                  bg={theme.colors.color4}
                                   borderColor={theme.colors.color1}>
                                   {
                                     availablePaletteNames.map((palette) => (
-                                      <option style={{ 
+                                      <option style={{
                                           color: theme.colors.onColor4,
                                           backgroundColor: theme.colors.color4
                                         }}
@@ -255,8 +254,8 @@ export default function DashboardPage() {
                                 </NativeSelect.Field>
                                 <NativeSelect.Indicator />
                               </NativeSelect.Root>
-                              
-                            
+
+
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
                             <Switch.Root onCheckedChange={toggleTheme} mt="10px">
@@ -269,7 +268,7 @@ export default function DashboardPage() {
                       </Popover.Positioner>
                     </Portal>
                   </Popover.Root>
-                  
+
               </Flex>
             </Flex>
             <Flex w="100%" h="2px" bg={theme.colors.color3}/>

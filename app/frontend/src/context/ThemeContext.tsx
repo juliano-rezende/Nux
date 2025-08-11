@@ -145,6 +145,7 @@ const themes: Themes = {
   dark: darkTheme
 };
 
+
 // -------------------- Paletas emparelhadas --------------------
 const defaultPalettes = [
   {
