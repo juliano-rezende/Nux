@@ -1,6 +1,6 @@
 "use client"; 
 
-import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, Popover, Portal, Switch, Text } from "@chakra-ui/react"; 
+import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text } from "@chakra-ui/react"; 
 import { useTheme } from "@/context/ThemeContext";
 import { useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from 'react';
@@ -66,22 +66,7 @@ export default function DashboardPage() {
             w="100%"
             flexGrow={10}
             justifyContent="center"> 
-              <div>
-                <button onClick={toggleTheme}>Tema: {currentThemeName}</button>
-
-                <div>
-                  Paleta:
-                  {availablePaletteNames.map(p => (
-                    <button
-                      key={p}
-                      onClick={() => setPaletteName(p)}
-                      style={{ fontWeight: p === paletteName ? "700" : "400" }}
-                    >
-                      {p}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              
           </Flex>
 
           <Flex
@@ -254,8 +239,39 @@ export default function DashboardPage() {
                               focusRingWidth="0px"                      
                               focusRingStyle="none" />
 
+
+                              <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema Atual</TextP>
+                              <NativeSelect.Root size="md" mt="8px">
+                                <NativeSelect.Field 
+                                  onChange={(e) => setPaletteName(e.target.value)}
+                                  value={paletteName}
+                                  fontSize="16px"
+                                  borderRadius="6px"
+                                  color={theme.colors.onColor4} 
+                                  bg={theme.colors.color4} 
+                                  borderColor={theme.colors.color1}>
+                                  {
+                                    availablePaletteNames.map((palette) => (
+                                      <option style={{ 
+                                          color: theme.colors.onColor4,
+                                          backgroundColor: theme.colors.color4
+                                        }}
+                                        key={palette} value={palette}>{palette.toUpperCase().slice(0, 1) + palette.slice(1)}
+                                      </option>
+                                    ))
+                                  }
+                                </NativeSelect.Field>
+                                <NativeSelect.Indicator />
+                              </NativeSelect.Root>
                               
                             
+
+                            <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
+                            <Switch.Root onCheckedChange={toggleTheme} mt="10px">
+                              <Switch.HiddenInput />
+                              <Switch.Control bg={theme.colors.color6}/>
+                              <Switch.Label color={theme.colors.color5}>Usar tema escuro</Switch.Label>
+                            </Switch.Root>
                           </Popover.Body>
                         </Popover.Content>
                       </Popover.Positioner>
