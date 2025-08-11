@@ -50,16 +50,16 @@ export default function DashboardPage() {
           justifyContent="space-between">
 
           <Flex flexDirection="row" flexGrow={1} alignItems="center" gap="5px">
-            <Icon size="2xl" color={theme.colors.onColor1}>
+            <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
               <BiSolidCoffeeAlt/>
             </Icon>
     
             <Text
                 fontFamily="'Inter Variable', sans-serif"
-                fontWeight="800"
-                fontSize={"30px"}
+                fontWeight="900"
+                fontSize={["32px", "36px", "40px"]} 
                 color={theme.colors.color7}
-              > Coffe Project</Text>
+              > NUX</Text>
           </Flex>
 
           <Flex
@@ -78,15 +78,7 @@ export default function DashboardPage() {
             alignItems="end"
             justifyContent="left">
 
-              <Switch.Root onCheckedChange={toggleTheme} colorPalette="green" size="md">
-                <Switch.HiddenInput />
-                <Switch.Control>
-                  <Switch.Thumb />
-                  <Switch.Indicator fallback={<Icon as={FaMoon} color="gray.400" />}>
-                    <Icon as={FaSun} color="yellow.400" />
-                  </Switch.Indicator>
-                </Switch.Control>
-              </Switch.Root>
+              
           </Flex>
         </Flex>
 

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "Nux - Dashboard",
   description: "",
   icons: {
-    icon: "/src/icon.png",
+    icon: "/icon.png",
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon-32x32.png",
   },
