@@ -1,0 +1,281 @@
+_format_version: "3.0"
+_transform: true
+
+# -----------------------------
+# CONSUMERS (exemplo p/ testes)
+# -----------------------------
+consumers:
+  - username: demo-consumer
+    custom_id: demo-1
+    tags: [demo]
+    jwt_secrets:
+      - algorithm: HS256
+        key: demo-key            # vai no 'iss' do JWT
+        secret: demo-secret      # segredo compartilhado (HS256)
+    keyauth_credentials:
+      - key: demo-api-key
+
+# -----------------------------
+# GLOBAL PLUGINS
+# -----------------------------
+plugins:
+  # JWT para todas as rotas (exclua 'auth' se quiser caminho público)
+  - name: jwt
+    config:
+      key_claim_name: iss
+      claims_to_verify:
+        - exp
+      run_on_preflight: true
+    enabled: true
+    tags: [security, jwt]
+
+  # Rate limit de exemplo (por IP)
+  - name: rate-limiting
+    config:
+      minute: 120
+      policy: local
+    enabled: true
+    tags: [throttle]
+
+# -----------------------------
+# SERVICES & ROUTES
+# Todas as rotas apontam pro Prism enquanto não existe backend real.
+# Depois basta trocar 'url' para o seu serviço real (ex: http://api:8080)
+# -----------------------------
+
+services:
+  - name: svc-auth
+    url: http://prism:4010
+    routes:
+      - name: r-auth
+        paths:
+          - /auth
+        strip_path: false
+        tags: [auth]
+    tags: [svc, auth]
+
+  - name: svc-companies
+    url: http://prism:4010
+    routes:
+      - name: r-companies
+        paths:
+          - /api/v1/companies
+          - /api/v1/companies/
+        strip_path: false
+        tags: [companies]
+    tags: [svc, companies]
+
+  - name: svc-users
+    url: http://prism:4010
+    routes:
+      - name: r-users
+        paths:
+          - /api/v1/users
+          - /api/v1/users/
+        strip_path: false
+        tags: [users]
+    tags: [svc, users]
+
+  - name: svc-plans
+    url: http://prism:4010
+    routes:
+      - name: r-plans
+        paths:
+          - /api/v1/plans
+          - /api/v1/plans/
+        strip_path: false
+        tags: [plans]
+    tags: [svc, billing]
+
+  - name: svc-subscriptions
+    url: http://prism:4010
+    routes:
+      - name: r-subscriptions
+        paths:
+          - /api/v1/subscriptions
+          - /api/v1/subscriptions/
+        strip_path: false
+        tags: [subscriptions]
+    tags: [svc, billing]
+
+  - name: svc-invoices
+    url: http://prism:4010
+    routes:
+      - name: r-invoices
+        paths:
+          - /api/v1/invoices
+          - /api/v1/invoices/
+        strip_path: false
+        tags: [invoices]
+    tags: [svc, billing]
+
+  - name: svc-modules
+    url: http://prism:4010
+    routes:
+      - name: r-modules
+        paths:
+          - /api/v1/modules
+          - /api/v1/modules/
+        strip_path: false
+        tags: [modules]
+    tags: [svc, access]
+
+  - name: svc-company-modules
+    url: http://prism:4010
+    routes:
+      - name: r-company-modules
+        paths:
+          - /api/v1/company-modules
+          - /api/v1/company-modules/
+        strip_path: false
+        tags: [company-modules]
+    tags: [svc, access]
+
+  - name: svc-user-modules
+    url: http://prism:4010
+    routes:
+      - name: r-user-modules
+        paths:
+          - /api/v1/user-modules
+          - /api/v1/user-modules/
+        strip_path: false
+        tags: [user-modules]
+    tags: [svc, access]
+
+  - name: svc-products
+    url: http://prism:4010
+    routes:
+      - name: r-products
+        paths:
+          - /api/v1/products
+          - /api/v1/products/
+        strip_path: false
+        tags: [products]
+    tags: [svc, catalog]
+
+  - name: svc-product-categories
+    url: http://prism:4010
+    routes:
+      - name: r-product-categories
+        paths:
+          - /api/v1/product-categories
+          - /api/v1/product-categories/
+        strip_path: false
+        tags: [product-categories]
+    tags: [svc, catalog]
+
+  - name: svc-orders
+    url: http://prism:4010
+    routes:
+      - name: r-orders
+        paths:
+          - /api/v1/orders
+          - /api/v1/orders/
+        strip_path: false
+        tags: [orders]
+    tags: [svc, operation]
+
+  - name: svc-payments
+    url: http://prism:4010
+    routes:
+      - name: r-payments
+        paths:
+          - /api/v1/payments
+          - /api/v1/payments/
+        strip_path: false
+        tags: [payments]
+    tags: [svc, billing]
+
+  - name: svc-customers
+    url: http://prism:4010
+    routes:
+      - name: r-customers
+        paths:
+          - /api/v1/customers
+          - /api/v1/customers/
+        strip_path: false
+        tags: [customers]
+    tags: [svc, operation]
+
+  - name: svc-tables
+    url: http://prism:4010
+    routes:
+      - name: r-tables
+        paths:
+          - /api/v1/tables
+          - /api/v1/tables/
+        strip_path: false
+        tags: [tables]
+    tags: [svc, operation]
+
+  - name: svc-tabs
+    url: http://prism:4010
+    routes:
+      - name: r-tabs
+        paths:
+          - /api/v1/tabs
+          - /api/v1/tabs/
+        strip_path: false
+        tags: [tabs]
+    tags: [svc, operation]
+
+  - name: svc-stock
+    url: http://prism:4010
+    routes:
+      - name: r-stock
+        paths:
+          - /api/v1/stock
+          - /api/v1/stock/
+        strip_path: false
+        tags: [stock]
+    tags: [svc, inventory]
+
+  - name: svc-stock-movements
+    url: http://prism:4010
+    routes:
+      - name: r-stock-movements
+        paths:
+          - /api/v1/stock-movements
+          - /api/v1/stock-movements/
+        strip_path: false
+        tags: [stock-movements]
+    tags: [svc, inventory]
+
+  - name: svc-reports
+    url: http://prism:4010
+    routes:
+      - name: r-reports
+        paths:
+          - /api/v1/reports
+          - /api/v1/reports/
+        strip_path: false
+        tags: [reports]
+    tags: [svc, reporting]
+
+  - name: svc-settings
+    url: http://prism:4010
+    routes:
+      - name: r-settings
+        paths:
+          - /api/v1/company-settings
+          - /api/v1/company-settings/
+        strip_path: false
+        tags: [settings]
+    tags: [svc, config]
+
+  - name: svc-internal
+    url: http://prism:4010
+    routes:
+      - name: r-internal
+        paths:
+          - /internal
+          - /internal/
+        strip_path: false
+        tags: [internal]
+        plugins:
+          - name: key-auth
+            config:
+              key_names:
+                - x-api-key
+            enabled: true
+    tags: [svc, internal]
