@@ -146,12 +146,12 @@ const themes: Themes = {
 // --- PALETAS PREDEFINIDAS (exemplos) ---
 const defaultPalettes: Palette[] = [
   {
-    name: "orange",
+    name: "default",
     overrides: {
-      color6: "#ff9100",
-      color7: "#c06d00",
-      color8: "#FFD6A6",
-      color9: "#FFB380"
+      color6: "#6366F1",
+      color7: "#A5B4FC",
+      color8: "#F59E0B",
+      color9: "#FCD34D"
     }
   },
   {
