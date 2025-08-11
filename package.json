@@ -1,0 +1,58 @@
+{
+  "name": "nux",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mono-repo NUX (frontend + bff + core-api + packages + infra)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.18 <=22",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "// dev --------------------------------": "",
+    "dev": "concurrently -n FE,BFF,CORE -c blue,green,magenta \"pnpm --filter frontend dev\" \"pnpm --filter bff start:dev\" \"pnpm --filter core-api start:dev\"",
+    "dev:fe": "pnpm --filter frontend dev",
+    "dev:bff": "pnpm --filter bff start:dev",
+    "dev:core": "pnpm --filter core-api start:dev",
+
+    "// build ------------------------------": "",
+    "build": "pnpm -r build",
+    "build:fe": "pnpm --filter frontend build",
+    "build:bff": "pnpm --filter bff build",
+    "build:core": "pnpm --filter core-api build",
+
+    "// quality ----------------------------": "",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
+    "format": "pnpm -r format",
+    "typecheck": "pnpm -r typecheck",
+
+   "// infra (Kong/Postgres) --------------": "",
+   "up":   "docker compose -f app/infra/gateway/docker-compose.yml --env-file app/infra/gateway/.env up -d",
+   "down": "docker compose -f app/infra/gateway/docker-compose.yml down",
+   "logs:kong": "docker compose -f app/infra/gateway/docker-compose.yml logs -f kong",
+
+    "// misc -------------------------------": "",
+    "clean": "pnpm -r exec rimraf node_modules dist .turbo .next coverage",
+    "postinstall": "pnpm -r install"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "concurrently": "^9.0.1",                  
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "globals": "^15.12.0",
+    "jiti": "^2.5.1",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.9.0"
+  }
+}

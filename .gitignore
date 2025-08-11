@@ -1,1 +1,88 @@
+# ------------------------------
+# Node / JS / TS
+# ------------------------------
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Compilados
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+.tmp/
+
+# ------------------------------
+# TypeScript
+# ------------------------------
+*.tsbuildinfo
+
+# ------------------------------
+# Environment
+# ------------------------------
 .env
+.env.*
+!.env.example
+!.env.local.example
+!.env.production.example
+
+# ------------------------------
+# IDE / Editor
+# ------------------------------
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ------------------------------
+# MacOS / Sistema
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Docker
+# ------------------------------
+docker-compose.override.yml
+**/pgdata/
+**/db-data/
+**/kong-data/
+
+# ------------------------------
+# Test / CI
+# ------------------------------
+.jest/
+jest-html-reporters-*
+playwright-report/
+test-results/
+
+# ------------------------------
+# Frontend (Next.js / React)
+# ------------------------------
+apps/frontend/.next/
+apps/frontend/.vercel/
+apps/frontend/public/build/
+apps/frontend/out/
+
+# ------------------------------
+# Backend (NestJS)
+# ------------------------------
+apps/bff/dist/
+apps/core-api/dist/
+
+# ------------------------------
+# Cache
+# ------------------------------
+.nyc_output
+.eslintcache
+.stylelintcache
+.cache-loader/
