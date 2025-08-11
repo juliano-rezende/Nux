@@ -14,6 +14,11 @@ import TextN from "@/components/primaries/texts/TextN";
 import IconButtonType1 from "@/components/primaries/buttons/IconButtonType1";
 import MenuList, { MenuItemData } from "@/components/walls/dashboard/MenuList";
 import DynamicMenuList from "@/components/walls/dashboard/MenuList";
+import { RiArrowRightLine } from "react-icons/ri";
+import ActionButton from "@/components/primaries/buttons/ActionButton";
+import { IoPerson } from "react-icons/io5";
+import { CiLogin } from "react-icons/ci";
+import NonColorButton from "@/components/primaries/buttons/NonColorButton";
 
 
 
@@ -107,7 +112,7 @@ export default function DashboardPage() {
                 <Drawer.Root placement={"start"}>
                   <Drawer.Trigger asChild>
                     <IconButton display={{base: 'flex', md: 'flex', lg: 'none'}} size="sm" bg={theme.colors.color3} color={theme.colors.onColor3} aria-label="Abrir ">
-                      <RxHamburgerMenu/>
+                      <RxHamburgerMenu/> 
                     </IconButton>
                   </Drawer.Trigger>
                   <Portal>
@@ -125,20 +130,17 @@ export default function DashboardPage() {
                             justifyContent="space-between"
                             pt="20px"
                             pb="20px">
-
-                            <Flex flexDirection="row" w="100%" alignItems="center" gap="5px" pl="20px">
-                              <Icon size="xl" color={theme.colors.onColor1}>
+                              <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
                                 <BiSolidCoffeeAlt/>
                               </Icon>
 
                               <Text
                                   fontFamily="'Inter Variable', sans-serif"
-                                  fontWeight="800"
-                                  fontSize={"22px"}
-                                  color={theme.colors.onColor1}
-                                > Coffe Project</Text>
+                                  fontWeight="900"
+                                  fontSize={["32px", "36px", "40px"]}
+                                  color={theme.colors.color7}
+                                > NUX</Text>
                             </Flex>
-                          </Flex>
                         </Drawer.Body>
                         <Drawer.CloseTrigger asChild>
                           <CloseButton size="sm" bg={theme.colors.color3} color={theme.colors.onColor3}/>
@@ -256,6 +258,16 @@ export default function DashboardPage() {
                               </NativeSelect.Root>
 
 
+                            <ActionButton 
+                              icon={<CiLogin />}
+                              label={"Sair da Conta"}
+                              mt={"8px"}/>
+
+                              <NonColorButton 
+                              icon={<CiLogin />}
+                              label={"Sair da Conta"}
+                              mt={"8px"}/>
+
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
                             <Switch.Root onCheckedChange={toggleTheme} mt="10px">
@@ -263,6 +275,7 @@ export default function DashboardPage() {
                               <Switch.Control bg={theme.colors.color6}/>
                               <Switch.Label color={theme.colors.color5}>Usar tema escuro</Switch.Label>
                             </Switch.Root>
+
                           </Popover.Body>
                         </Popover.Content>
                       </Popover.Positioner>

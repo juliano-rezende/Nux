@@ -11,6 +11,7 @@ import React, {
   SetStateAction
 } from "react";
 import LocalStorageHelper from "@/utils/LocalStorageHelper";
+import { on } from "events";
 
 // -------------------- Tipos --------------------
 interface ThemeColors {
@@ -192,11 +193,15 @@ const defaultPalettes = [
       color6: "#0066FF",
       color7: "#0047b3",
       color8: "#99CCFF",
-      color9: "#66AAFF"
+      color9: "#66AAFF",
+      onColor6: "#F2F2F7",
+      onColor7: "#FFFFFF",
+      onColor8: "#000000",
+      onColor9: "#000000"
     },
     overridesDark: {
       color6: "#6fa8ff",
-      color7: "#0047b3",
+      color7: "#296accff",
       color8: "#001f3f",
       color9: "#002a5c",
       onColor6: "#000000"
