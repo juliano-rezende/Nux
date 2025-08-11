@@ -19,42 +19,18 @@ import DynamicMenuList from "@/components/walls/dashboard/MenuList";
 
 export default function DashboardPage() {
 
-  const { theme, toggleTheme } = useTheme();
+  //const { theme, toggleTheme } = useTheme();
   const [userName, setUserName] = useState<string>('John Doe');
   
-  
-  const menuData: MenuItemData[] = [
-    {
-      label: 'Home',
-      href: '/',
-      icon: <FaHome />,
-    },
-    {
-      label: 'Arquivos',
-      icon: <FaFileAlt />,
-      subItems: [
-        { label: 'Novo Documento', href: '/files/new' },
-        { label: 'Abrir Recentes', href: '/files/recent' },
-      ],
-    },
-    {
-      label: 'Configurações',
-      icon: <FaCog />,
-      subItems: [
-        { label: 'Perfil', href: '/settings/profile' },
-        { label: 'Aparência', href: '/settings/appearance' },
-      ]
-    },
-    {
-      label: 'Contato',
-      href: '/contact',
-      icon: <FaFolderOpen />,
-    }
-  ];
 
-
-  //USAR AQUI
-  //const [isMobile] = useMediaQuery(["(max-width: 768px)"]);
+  const {
+    theme,
+    currentThemeName,
+    toggleTheme,
+    paletteName,
+    setPaletteName,
+    availablePaletteNames
+  } = useTheme();
 
 
   return (
@@ -82,7 +58,7 @@ export default function DashboardPage() {
                 fontFamily="'Inter Variable', sans-serif"
                 fontWeight="800"
                 fontSize={"30px"}
-                color={theme.colors.onColor1}
+                color={theme.colors.color7}
               > Coffe Project</Text>
           </Flex>
 
@@ -90,7 +66,22 @@ export default function DashboardPage() {
             w="100%"
             flexGrow={10}
             justifyContent="center"> 
-              <DynamicMenuList items={menuData} />
+              <div>
+                <button onClick={toggleTheme}>Tema: {currentThemeName}</button>
+
+                <div>
+                  Paleta:
+                  {availablePaletteNames.map(p => (
+                    <button
+                      key={p}
+                      onClick={() => setPaletteName(p)}
+                      style={{ fontWeight: p === paletteName ? "700" : "400" }}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              </div>
           </Flex>
 
           <Flex
