@@ -2,98 +2,107 @@
 
 import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text } from "@chakra-ui/react";
 import { useTheme } from "@/context/ThemeContext";
-import { useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from 'react';
-import { FaCog, FaFileAlt, FaFolderOpen, FaHome, FaMoon, FaSun } from "react-icons/fa";
-import { MdCoffeeMaker } from "react-icons/md";
-import { HiCog, HiHeart } from "react-icons/hi";
 import { BiSolidCoffeeAlt } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import TextP from "@/components/primaries/texts/TextP";
 import TextN from "@/components/primaries/texts/TextN";
 import IconButtonType1 from "@/components/primaries/buttons/IconButtonType1";
-import DynamicMenuList from "@/components/walls/dashboard/MenuList";
-import { RiArrowRightLine } from "react-icons/ri";
+import DynamicMenuList, { DynamicMenuListProps } from "@/components/walls/dashboard/MenuList";
 import ActionButton from "@/components/primaries/buttons/ActionButton";
-import { IoPerson } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import NonColorButton from "@/components/primaries/buttons/NonColorButton";
-import { LuArchive, LuBook, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuMenu, LuMonitor, LuSave, LuSettings, LuSquareStack, LuTruck } from "react-icons/lu";
+import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
 
 
-export interface MenuItem {
-  value: string;
-  label: string;
-  icon: React.ReactElement;
-  children?: Omit<MenuItem, 'children' | 'icon'>[]; // Subitens não têm ícones ou outros submenus
-}
 
 
-const menuItems: MenuItem[] = [
+const sidebarMenuData: DynamicMenuListProps[] = [
   {
-    value: 'dashboard',
-    label: 'Dashboard',
-    icon: <LuLayoutDashboard />,
-    // Sem 'children', será renderizado como um item simples.
+    label: "Dashboard",
+    icon: <LuLayoutGrid />,
+    href: "/dashboard",
+    items: [], 
   },
   {
-    value: 'catalogo',
-    label: 'Catálogo Digital',
-    icon: <LuBook />,
-    children: [
-      { value: 'catalogo/produtos', label: 'Produtos' },
-      { value: 'catalogo/categorias', label: 'Categorias' },
-    ],
+    label: "Catálogo Digital",
+    icon: <LuBookOpen />,
+    href: "/catalogo",
+    items: [],
   },
   {
-    value: 'caixa',
-    label: 'Caixa',
+    label: "Caixa",
     icon: <LuMonitor />,
-    children: [
-      { value: 'caixa/abrir-fechar', label: 'Abrir/Fechar Caixa' },
-      { value: 'caixa/historico', label: 'Histórico de Vendas' },
-    ],
+    href: "/caixa",
+    items: [],
   },
   {
-    value: 'controle-comandas',
-    label: 'Controle de Comandas',
-    icon: <LuClipboardList />,
+    label: "Controle de Comandas",
+    icon: <LuFileSpreadsheet />,
+    href: "/comandas",
+    items: [],
   },
   {
-    value: 'gestao-mesas',
-    label: 'Gestão de Mesas',
-    icon: <LuSquareStack />,
+    label: "Gestão de Mesas",
+    icon: <LuTable />,
+    href: "/mesas",
+    items: [],
   },
   {
-    value: 'tela-cozinha',
-    label: 'Tela da Cozinha',
+    label: "Tela da Cozinha",
     icon: <LuChefHat />,
+    href: "/cozinha",
+    items: [],
   },
   {
-    value: 'estoque',
-    label: 'Estoque',
+    label: "Estoque",
     icon: <LuBox />,
-    children: [
-      { value: 'estoque/movimentacao', label: 'Movimentação' },
-      { value: 'estoque/relatorios', label: 'Relatórios' },
+    items: [
+      {
+        value: "produtos",
+        label: "Produtos",
+        icon: <LuArchive />,
+        href: "/estoque/produtos",
+      },
+      {
+        value: "relatorios_estoque",
+        label: "Relatórios",
+        icon: <LuArchive />,
+        href: "/estoque/relatorios",
+      },
     ],
   },
   {
-    value: 'delivery',
-    label: 'Delivery',
+    label: "Delivery",
     icon: <LuTruck />,
+    href: "/delivery",
+    items: [],
   },
   {
-    value: 'configuracoes',
-    label: 'Configurações',
+    label: "Configurações",
     icon: <LuSettings />,
-    children: [
-      { value: 'configuracoes/geral', label: 'Geral' },
-      { value: 'configuracoes/usuarios', label: 'Usuários' },
-      { value: 'configuracoes/impressoras', label: 'Impressoras' },
+    items: [
+      {
+        value: "perfil_loja",
+        label: "Perfil da Loja",
+        href: "/configuracoes/loja",
+      },
+      {
+        value: "usuarios",
+        label: "Usuários e Permissões",
+        icon: <LuUsers />,
+        href: "/configuracoes/usuarios",
+      },
+      {
+        value: "seguranca",
+        label: "Segurança",
+        icon: <LuShield />,
+        href: "/configuracoes/seguranca",
+      },
     ],
   },
 ];
+
 
 
 
@@ -152,12 +161,13 @@ export default function DashboardPage() {
             alignItems="left"
             justifyContent="center">
               {
-                menuItems.map(item => (
+                sidebarMenuData.map(item => (
                   <DynamicMenuList
-                    key={item.value}
+                    key={item.label}
                     label={item.label}
                     icon={item.icon}
-                    items={menuItems}
+                    items={item.items}
+                    href={item.href}
                   />
                 ))
               }

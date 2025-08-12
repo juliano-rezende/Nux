@@ -4,8 +4,7 @@ import React, { ReactElement } from 'react';
 import { Menu, Button, MenuItem, Portal } from '@chakra-ui/react';
 import { LuChevronRight } from 'react-icons/lu';
 import { useTheme } from '@/context/ThemeContext';
-
-
+import { useRouter } from 'next/navigation'; // Importa o useRouter do Next.js
 
 // Define a interface para os itens do menu
 interface MenuItemProps {
@@ -13,26 +12,24 @@ interface MenuItemProps {
   label: string;
   icon?: ReactElement;
   children?: MenuItemProps[];
+  href?: string; // Adiciona a propriedade href para links
 }
 
-
-
 // Props do componente principal
-interface DynamicMenuListProps {
+export interface DynamicMenuListProps {
   label: string;
   icon?: ReactElement;
   items: MenuItemProps[];
+  href?: string; // Propriedade href adicionada também aqui
 }
 
-
-
 // Função recursiva para renderizar os itens do menu e submenus
-const renderMenuItems = (items: MenuItemProps[]) => {
-
+const RenderMenuItems = (items: MenuItemProps[]) => {
+  const router = useRouter(); // Hook do router para navegação
+  const { theme } = useTheme();
 
   return items.map((item) => {
-    const { theme } = useTheme();
-
+  
     if (item.children && item.children.length > 0) {
       return (
         <Menu.Root key={item.value} positioning={{ placement: "right-start", gutter: 2 }}>
@@ -51,15 +48,16 @@ const renderMenuItems = (items: MenuItemProps[]) => {
           <Portal>
             <Menu.Positioner>
               <Menu.Content bg={theme.colors.onColor2}>
-                {renderMenuItems(item.children)}
+                {RenderMenuItems(item.children)}
               </Menu.Content>
             </Menu.Positioner>
           </Portal>
         </Menu.Root>
       );
     }
-
     
+    // Se o item não tem children, ele pode ser um link ou uma ação.
+    // Usamos o onClick para navegar se o href existir.
     return (
       <Menu.Item 
         bg={theme.colors.onColor2} 
@@ -69,7 +67,9 @@ const renderMenuItems = (items: MenuItemProps[]) => {
           color: theme.colors.onColor2
         }}  
         key={item.value} 
-        value={item.value}>
+        value={item.value}
+        onClick={() => item.href && router.push(item.href)} // Navega se href for fornecido
+      >
         {item.icon}
         <span style={{ marginLeft: item.icon ? '8px' : '0' }}>{item.label}</span>
       </Menu.Item>
@@ -77,12 +77,41 @@ const renderMenuItems = (items: MenuItemProps[]) => {
   });
 };
 
-
-
-
-export default function DynamicMenuList({ label, icon, items }: DynamicMenuListProps) {
+export default function DynamicMenuList({ label, icon, items, href }: DynamicMenuListProps) {
   const { theme } = useTheme();
+  const router = useRouter();
 
+  if (!items || items.length === 0) {
+    const handleNavigation = () => {
+      if (href) {
+        router.push(href);
+      }
+    };
+    
+    return (
+      <Button 
+        onClick={handleNavigation}
+        size="xl" 
+        mt="8px" 
+        ml="20px"
+        mr="20px"
+        bg={theme.colors.color0} 
+        color={theme.colors.onColor2} 
+        _hover={{ 
+          bg: theme.colors.color4,
+          color: theme.colors.onColor4
+        }} 
+        borderRadius={"md"} 
+        justifyContent="flex-start" 
+        pl={4} 
+      >
+        {icon}
+        {label}
+      </Button>
+    );
+  }
+
+  // Comportamento original se houver 'items'
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
@@ -91,7 +120,6 @@ export default function DynamicMenuList({ label, icon, items }: DynamicMenuListP
           mt="8px" 
           ml="20px"
           mr="20px"
-          //w={"0%"} 
           bg={theme.colors.color0} 
           color={theme.colors.onColor2} 
           _hover={{ 
@@ -101,6 +129,7 @@ export default function DynamicMenuList({ label, icon, items }: DynamicMenuListP
           borderRadius={"md"} 
           justifyContent="flex-start" 
           pl={4} 
+          onClick={() => href && router.push(href)}
         >
           {icon}
           {label}
@@ -108,7 +137,7 @@ export default function DynamicMenuList({ label, icon, items }: DynamicMenuListP
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner >
-          <Menu.Content bg={theme.colors.onColor2}>{renderMenuItems(items)}</Menu.Content>
+          <Menu.Content bg={theme.colors.onColor2}>{RenderMenuItems(items)}</Menu.Content>
         </Menu.Positioner>
       </Portal>
     </Menu.Root>
