@@ -97,17 +97,17 @@ const lightTheme: Theme = {
     color9: "",
     color10: "",
 
-    onColor1: "#000000",
+    onColor1: "#1C1C1E", // Cinza escuro sobre branco para suavidade
     onColor2: "#1C1C1E",
-    onColor3: "#000000",
-    onColor4: "#000000",
+    onColor3: "#1C1C1E",
+    onColor4: "#000000", // Preto para garantir contraste em tons médios
     onColor5: "#FFFFFF",
 
-    onColor6: "#0D0D0D",
-    onColor7: "#0D0D0D",
+    onColor6: "", // Será definido pela paleta
+    onColor7: "",
     onColor8: "",
     onColor9: "",
-    onColor10: "#FFFFFF"
+    onColor10: ""
   }
 };
 
@@ -127,17 +127,17 @@ const darkTheme: Theme = {
     color9: "",
     color10: "",
 
-    onColor1: "#F2F2F7",
-    onColor2: "#C7C7CC",
-    onColor3: "#FFFFFF",
+    onColor1: "#F2F2F7", // Cinza claro sobre preto para conforto visual
+    onColor2: "#F2F2F7",
+    onColor3: "#FFFFFF", // Branco para garantir contraste em tons médios
     onColor4: "#FFFFFF",
     onColor5: "#000000",
 
-    onColor6: "#0D0D0D",
-    onColor7: "#0D0D0D",
+    onColor6: "", // Será definido pela paleta
+    onColor7: "",
     onColor8: "",
     onColor9: "",
-    onColor10: "#000000"
+    onColor10: ""
   }
 };
 
@@ -147,7 +147,7 @@ const themes: Themes = {
 };
 
 
-// -------------------- Paletas emparelhadas --------------------
+// -------------------- Paletas Emparelhadas (Ajustadas) --------------------
 const defaultPalettes = [
   {
     name: "laranja",
@@ -156,15 +156,21 @@ const defaultPalettes = [
       color6: "#ff8a00",
       color7: "#ffb86b",
       color8: "#FFD6A6",
-      color9: "#FFB380"
+      color9: "#FFB380",
+      onColor6: "#1C1C1E",
+      onColor7: "#1C1C1E",
+      onColor8: "#4b2e00",
+      onColor9: "#1C1C1E",
     },
     overridesDark: {
       color6: "#ffb84d",
       color7: "#c06d00",
       color8: "#4b2e00",
       color9: "#663f00",
-      onColor6: "#000000",
-      onColor7: "#ffffff"
+      onColor6: "#1C1C1E",
+      onColor7: "#FFFFFF",
+      onColor8: "#FFD6A6",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta vibrante laranja"
   },
@@ -175,14 +181,21 @@ const defaultPalettes = [
       color6: "#4CAF50",
       color7: "#2E7D32",
       color8: "#A5D6A7",
-      color9: "#81C784"
+      color9: "#81C784",
+      onColor6: "#FFFFFF",
+      onColor7: "#F2F2F7",
+      onColor8: "#1C1C1E",
+      onColor9: "#1C1C1E",
     },
     overridesDark: {
       color6: "#66cc77",
       color7: "#2e7d32",
       color8: "#103214",
       color9: "#0f3a12",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#A5D6A7",
+      onColor8: "#A5D6A7",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta verde mais suave"
   },
@@ -194,17 +207,20 @@ const defaultPalettes = [
       color7: "#0047b3",
       color8: "#99CCFF",
       color9: "#66AAFF",
-      onColor6: "#F2F2F7",
-      onColor7: "#FFFFFF",
-      onColor8: "#000000",
-      onColor9: "#000000"
+      onColor6: "#FFFFFF",
+      onColor7: "#F2F2F7",
+      onColor8: "#001f3f",
+      onColor9: "#FFFFFF"
     },
     overridesDark: {
       color6: "#6fa8ff",
-      color7: "#296accff",
+      color7: "#296acc",
       color8: "#001f3f",
       color9: "#002a5c",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#FFFFFF",
+      onColor8: "#99CCFF",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta azul clássica"
   },
@@ -215,14 +231,21 @@ const defaultPalettes = [
       color6: "#F44336",
       color7: "#D32F2F",
       color8: "#FFCDD2",
-      color9: "#E57373"
+      color9: "#E57373",
+      onColor6: "#FFFFFF",
+      onColor7: "#FFFFFF",
+      onColor8: "#7F1313",
+      onColor9: "#FFFFFF",
     },
     overridesDark: {
       color6: "#E57373",
       color7: "#B71C1C",
       color8: "#4E0B0B",
       color9: "#7F1313",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#FFCDD2",
+      onColor8: "#FFCDD2",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta vermelha intensa"
   },
@@ -233,14 +256,21 @@ const defaultPalettes = [
       color6: "#9C27B0",
       color7: "#7B1FA2",
       color8: "#E1BEE7",
-      color9: "#CE93D8"
+      color9: "#CE93D8",
+      onColor6: "#FFFFFF",
+      onColor7: "#F2F2F7",
+      onColor8: "#4A148C",
+      onColor9: "#FFFFFF",
     },
     overridesDark: {
       color6: "#CE93D8",
       color7: "#6A1B9A",
       color8: "#2C0B3E",
       color9: "#4A148C",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#E1BEE7",
+      onColor8: "#E1BEE7",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta roxa elegante"
   },
@@ -251,14 +281,21 @@ const defaultPalettes = [
       color6: "#FFEB3B",
       color7: "#FBC02D",
       color8: "#FFF9C4",
-      color9: "#FFF59D"
+      color9: "#FFF59D",
+      onColor6: "#4D4B0B",
+      onColor7: "#1C1C1E",
+      onColor8: "#7F7A13",
+      onColor9: "#4D4B0B",
     },
     overridesDark: {
       color6: "#FFF59D",
       color7: "#F9A825",
       color8: "#4D4B0B",
       color9: "#7F7A13",
-      onColor6: "#000000"
+      onColor6: "#4D4B0B",
+      onColor7: "#000000",
+      onColor8: "#FFF9C4",
+      onColor9: "#FFFDE7"
     },
     description: "Paleta amarela energética"
   },
@@ -269,14 +306,21 @@ const defaultPalettes = [
       color6: "#E91E63",
       color7: "#C2185B",
       color8: "#F8BBD0",
-      color9: "#F48FB1"
+      color9: "#F48FB1",
+      onColor6: "#FFFFFF",
+      onColor7: "#FFFFFF",
+      onColor8: "#880E4F",
+      onColor9: "#FFFFFF",
     },
     overridesDark: {
       color6: "#F48FB1",
       color7: "#AD1457",
       color8: "#5D092B",
       color9: "#880E4F",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#F8BBD0",
+      onColor8: "#F8BBD0",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta rosa charmosa"
   },
@@ -287,88 +331,23 @@ const defaultPalettes = [
       color6: "#00BCD4",
       color7: "#0097A7",
       color8: "#B2EBF2",
-      color9: "#80DEEA"
+      color9: "#80DEEA",
+      onColor6: "#000000",
+      onColor7: "#FFFFFF",
+      onColor8: "#006064",
+      onColor9: "#000000",
     },
     overridesDark: {
       color6: "#80DEEA",
       color7: "#00838F",
       color8: "#00343A",
       color9: "#006064",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#B2EBF2",
+      onColor8: "#B2EBF2",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta ciano refrescante"
-  },
-  {
-    name: "turquesa",
-    label: "Turquesa",
-    overridesLight: {
-      color6: "#009688",
-      color7: "#00796B",
-      color8: "#B2DFDB",
-      color9: "#80CBC4"
-    },
-    overridesDark: {
-      color6: "#80CBC4",
-      color7: "#00695C",
-      color8: "#002B26",
-      color9: "#004D40",
-      onColor6: "#000000"
-    },
-    description: "Paleta turquesa moderna"
-  },
-  {
-    name: "indigo",
-    label: "Índigo",
-    overridesLight: {
-      color6: "#3F51B5",
-      color7: "#303F9F",
-      color8: "#C5CAE9",
-      color9: "#9FA8DA"
-    },
-    overridesDark: {
-      color6: "#9FA8DA",
-      color7: "#283593",
-      color8: "#1A237E",
-      color9: "#1A237E",
-      onColor6: "#000000"
-    },
-    description: "Paleta índigo profunda"
-  },
-  {
-    name: "verde-limao",
-    label: "Verde-Limão",
-    overridesLight: {
-      color6: "#CDDC39",
-      color7: "#AFB42B",
-      color8: "#F0F4C3",
-      color9: "#E6EE9C"
-    },
-    overridesDark: {
-      color6: "#E6EE9C",
-      color7: "#9E9D24",
-      color8: "#3E4010",
-      color9: "#827717",
-      onColor6: "#000000"
-    },
-    description: "Paleta verde-limão cítrica"
-  },
-  {
-    name: "ambar",
-    label: "Âmbar",
-    overridesLight: {
-      color6: "#FFC107",
-      color7: "#FFA000",
-      color8: "#FFECB3",
-      color9: "#FFD54F"
-    },
-    overridesDark: {
-      color6: "#FFD54F",
-      color7: "#FF8F00",
-      color8: "#5F4C02",
-      color9: "#FF6F00",
-      onColor6: "#000000"
-    },
-    description: "Paleta âmbar quente"
   },
   {
     name: "marrom",
@@ -377,14 +356,21 @@ const defaultPalettes = [
       color6: "#795548",
       color7: "#5D4037",
       color8: "#D7CCC8",
-      color9: "#BCAAA4"
+      color9: "#BCAAA4",
+      onColor6: "#FFFFFF",
+      onColor7: "#F2F2F7",
+      onColor8: "#3E2723",
+      onColor9: "#3E2723",
     },
     overridesDark: {
       color6: "#BCAAA4",
       color7: "#4E342E",
       color8: "#2A1C16",
       color9: "#3E2723",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#D7CCC8",
+      onColor8: "#D7CCC8",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta marrom terrosa"
   },
@@ -395,14 +381,21 @@ const defaultPalettes = [
       color6: "#9E9E9E",
       color7: "#616161",
       color8: "#F5F5F5",
-      color9: "#EEEEEE"
+      color9: "#EEEEEE",
+      onColor6: "#000000",
+      onColor7: "#FFFFFF",
+      onColor8: "#1C1C1E",
+      onColor9: "#1C1C1E",
     },
     overridesDark: {
       color6: "#BDBDBD",
       color7: "#757575",
       color8: "#303030",
       color9: "#424242",
-      onColor6: "#000000"
+      onColor6: "#000000",
+      onColor7: "#F5F5F5",
+      onColor8: "#EEEEEE",
+      onColor9: "#F2F2F7"
     },
     description: "Paleta cinza neutra"
   }

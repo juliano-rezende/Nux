@@ -3,7 +3,6 @@
 import React from "react";
 import { Button, ButtonProps as ChakraButtonProps } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
-import { IoPerson } from "react-icons/io5";
 
 
 interface MainButtonProps extends ChakraButtonProps {

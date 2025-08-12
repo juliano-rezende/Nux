@@ -263,11 +263,12 @@ export default function DashboardPage() {
                               label={"Sair da Conta"}
                               mt={"8px"}/>
 
-                              <NonColorButton 
+
+                            <NonColorButton 
+                              bg={theme.colors.color3}
                               icon={<CiLogin />}
                               label={"Sair da Conta"}
                               mt={"8px"}/>
-
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
                             <Switch.Root onCheckedChange={toggleTheme} mt="10px">
