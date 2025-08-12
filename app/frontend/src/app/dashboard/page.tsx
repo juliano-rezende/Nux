@@ -15,6 +15,7 @@ import NonColorButton from "@/components/primaries/buttons/NonColorButton";
 import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
 import SideBar from "@/components/walls/dashboard/SideBar";
 import Header from "@/components/walls/dashboard/Header";
+import { TiHomeOutline } from "react-icons/ti";
 
 
 
@@ -140,7 +141,7 @@ export default function DashboardPage() {
           flexGrow={[4, 8, 20]}
           bg={theme.colors.color1}
           flexDirection="column">
-            <Header userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+            <Header pageNameIcon={<TiHomeOutline/>} pageName={"Início"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
             
             <Flex w="100%" h="2px" bg={theme.colors.color3}/>
         </Flex>

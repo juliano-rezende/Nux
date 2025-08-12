@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ReactElement } from "react";
 import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, Icon, CloseButton, Drawer, IconButton, Input, NativeSelect, Popover, Portal, Switch } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
 import DynamicMenuList, { DynamicMenuListProps } from "./MenuList";
@@ -17,12 +17,14 @@ import SideBar from "./SideBar";
 export interface SideBar {
   companyLogo: string;
   userName: string;
+  pageName: string;
+  pageNameIcon: ReactElement;
   menuButtons: DynamicMenuListProps[];
 }
 
 
 
-export default function Header({ companyLogo, userName, menuButtons }: SideBar) {
+export default function Header({ companyLogo, userName, pageNameIcon, pageName, menuButtons }: SideBar) {
 
     const {
         theme,
@@ -50,6 +52,22 @@ export default function Header({ companyLogo, userName, menuButtons }: SideBar) 
                 justifyContent="center"
                 alignItems="center">
 
+                <Flex flexDirection="row" alignItems="center" gap="10px">
+                    
+                    <Icon size="lg" color={theme.colors.color6}>
+                        {pageNameIcon}
+                    </Icon>
+                    <Text
+                    //fontFamily="'Inter Variable', sans-serif"
+                    textStyle="2xl"
+                    fontWeight="semibold"
+                    display={{base: 'none', md: 'none', lg: 'flex'}}
+                    color={theme.colors.onColor1}
+                    > {pageName}</Text>
+                
+                </Flex>
+
+
                 <Drawer.Root placement={"start"}>
                   <Drawer.Trigger asChild>
                     <IconButton display={{base: 'flex', md: 'flex', lg: 'none'}} size="sm" bg={theme.colors.color3} color={theme.colors.onColor3} aria-label="Abrir ">
@@ -73,13 +91,19 @@ export default function Header({ companyLogo, userName, menuButtons }: SideBar) 
                 </Drawer.Root>
               </Flex>
 
-              <Text
+            {/*
+            <Text
                 //fontFamily="'Inter Variable', sans-serif"
                 //fontWeight="500"
-                fontSize={"22px"}
+                //fontSize={"22px"}
+                textStyle="2xl"
+                fontWeight="medium"
+                fontStyle={"italic"}
                 color={theme.colors.onColor1}
-              > Olá, {userName}! </Text>
+                > Olá, {userName}! </Text>
 
+            */}
+              
               <Flex
                 h="100%"
                 bg={theme.colors.color0}
