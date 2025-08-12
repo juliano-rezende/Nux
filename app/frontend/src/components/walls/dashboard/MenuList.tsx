@@ -28,7 +28,7 @@ interface DynamicMenuListProps {
 
 // Função recursiva para renderizar os itens do menu e submenus
 const renderMenuItems = (items: MenuItemProps[]) => {
-  
+
 
   return items.map((item) => {
     const { theme } = useTheme();
@@ -87,8 +87,9 @@ export default function DynamicMenuList({ label, icon, items }: DynamicMenuListP
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button 
-          size="md"
-          w= "90%"
+          size="xl"
+          mt="8px"
+          w= "80%"
           bg={theme.colors.onColor2} 
           color={theme.colors.onColor6} 
           _hover={{ 

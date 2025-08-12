@@ -18,25 +18,82 @@ import ActionButton from "@/components/primaries/buttons/ActionButton";
 import { IoPerson } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import NonColorButton from "@/components/primaries/buttons/NonColorButton";
-import { LuArchive, LuFile, LuFileCode, LuFileText, LuFolder, LuGithub, LuMenu, LuSave } from "react-icons/lu";
+import { LuArchive, LuBook, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuMenu, LuMonitor, LuSave, LuSettings, LuSquareStack, LuTruck } from "react-icons/lu";
 
 
-const menuItems = [
-    { value: 'new-txt', label: 'Novo Arquivo de Texto', icon: <LuFileText /> },
-    { value: 'new-file', label: 'Novo Arquivo...', icon: <LuFile /> },
-    {
-      value: 'open-recent',
-      label: 'Abrir Recentes',
-      icon: <LuFolder />,
-      children: [
-        { value: 'panda', label: 'Panda', icon: <LuGithub /> },
-        { value: 'ark', label: 'Ark UI', icon: <LuArchive /> },
-        { value: 'chakra', label: 'Chakra v3', icon: <LuFileCode /> },
-      ],
-    },
-    { value: 'open-file', label: 'Abrir Arquivo...', icon: <LuFolder /> },
-    { value: 'export', label: 'Exportar', icon: <LuSave /> },
-  ];
+export interface MenuItem {
+  value: string;
+  label: string;
+  icon: React.ReactElement;
+  children?: Omit<MenuItem, 'children' | 'icon'>[]; // Subitens não têm ícones ou outros submenus
+}
+
+
+const menuItems: MenuItem[] = [
+  {
+    value: 'dashboard',
+    label: 'Dashboard',
+    icon: <LuLayoutDashboard />,
+    // Sem 'children', será renderizado como um item simples.
+  },
+  {
+    value: 'catalogo',
+    label: 'Catálogo Digital',
+    icon: <LuBook />,
+    children: [
+      { value: 'catalogo/produtos', label: 'Produtos' },
+      { value: 'catalogo/categorias', label: 'Categorias' },
+    ],
+  },
+  {
+    value: 'caixa',
+    label: 'Caixa',
+    icon: <LuMonitor />,
+    children: [
+      { value: 'caixa/abrir-fechar', label: 'Abrir/Fechar Caixa' },
+      { value: 'caixa/historico', label: 'Histórico de Vendas' },
+    ],
+  },
+  {
+    value: 'controle-comandas',
+    label: 'Controle de Comandas',
+    icon: <LuClipboardList />,
+  },
+  {
+    value: 'gestao-mesas',
+    label: 'Gestão de Mesas',
+    icon: <LuSquareStack />,
+  },
+  {
+    value: 'tela-cozinha',
+    label: 'Tela da Cozinha',
+    icon: <LuChefHat />,
+  },
+  {
+    value: 'estoque',
+    label: 'Estoque',
+    icon: <LuBox />,
+    children: [
+      { value: 'estoque/movimentacao', label: 'Movimentação' },
+      { value: 'estoque/relatorios', label: 'Relatórios' },
+    ],
+  },
+  {
+    value: 'delivery',
+    label: 'Delivery',
+    icon: <LuTruck />,
+  },
+  {
+    value: 'configuracoes',
+    label: 'Configurações',
+    icon: <LuSettings />,
+    children: [
+      { value: 'configuracoes/geral', label: 'Geral' },
+      { value: 'configuracoes/usuarios', label: 'Usuários' },
+      { value: 'configuracoes/impressoras', label: 'Impressoras' },
+    ],
+  },
+];
 
 
 
@@ -89,12 +146,20 @@ export default function DashboardPage() {
           <Flex
             w="100%"
             flexGrow={10}
+            flexDirection="column"
+            alignItems="center"
             justifyContent="center">
-              
-            <DynamicMenuList
-              label="Ações"
-              icon={<LuFile />}
-              items={menuItems}/>
+              {
+                menuItems.map(item => (
+                  <DynamicMenuList
+                    key={item.value}
+                    label={item.label}
+                    icon={item.icon}
+                    items={menuItems}
+                  />
+                ))
+              }
+
           </Flex>
 
           <Flex
