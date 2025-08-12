@@ -17,8 +17,8 @@ export default function NonColorButton({ label, ...rest }: MainButtonProps) {
         <Button
             bg={rest.bg || theme.colors.color2}
             color={rest.color || theme.colors.onColor2}
-            _hover={{ bg: rest.bg || theme.colors.color3 }}
-            _active={{ bg: rest.bg || theme.colors.color4 }}
+            _hover={{ bg: rest._hover?.bg || theme.colors.color3 }}
+            _active={{ bg: rest._active?.bg || theme.colors.color4 }}
             _focus={{ boxShadow: "none" }}
             borderRadius={rest.borderRadius || "md"}
             fontSize={rest.fontSize || "16px"}

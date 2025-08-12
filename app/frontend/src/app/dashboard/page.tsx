@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text } from "@chakra-ui/react";
+import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text, Image } from "@chakra-ui/react";
 import { useTheme } from "@/context/ThemeContext";
 import React, { useState } from 'react';
 import { BiSolidCoffeeAlt } from "react-icons/bi";
@@ -140,7 +140,13 @@ export default function DashboardPage() {
           justifyContent="space-between">
 
 
-          <Flex flexDirection="row" flexGrow={1} alignItems="center" gap="5px">
+          <Flex flexDirection="row" flexGrow={3} alignItems="center" gap="5px">
+            <Image
+              src="/logo.jpg"
+              alt="Logo"
+              w={["32px", "36px", "100px"]}
+              h={["32px", "36px", "100px"]}/>
+            {/*
             <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
               <BiSolidCoffeeAlt/>
             </Icon>
@@ -151,40 +157,44 @@ export default function DashboardPage() {
                 fontSize={["32px", "36px", "40px"]}
                 color={theme.colors.color7}
               > NUX</Text>
+            */}
           </Flex>
 
+          <Flex h="2px" w="100%" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
 
           <Flex
             w="100%"
             flexGrow={10}
             flexDirection="column"
             alignItems="left"
-            justifyContent="center">
-              {
-                sidebarMenuData.map(item => (
-                  <DynamicMenuList
-                    key={item.label}
-                    label={item.label}
-                    icon={item.icon}
-                    items={item.items}
-                    href={item.href}
-                  />
-                ))
-              }
+            justifyContent="top"
+            pt="30px">
+            {
+              sidebarMenuData.map(item => (
+                <DynamicMenuList
+                  key={item.label}
+                  label={item.label}
+                  icon={item.icon}
+                  items={item.items}
+                  href={item.href}
+                />
+              ))
+            }
           </Flex>
 
 
 
-          <Flex
-            w="100%"
-            flexGrow={1}
-            pr="20px"
-            pl="20px"
-            pb="20px"
-            alignItems="end"
-            justifyContent="left">
+          <Flex flexDirection="row" w="100%" flexGrow={3} justifyContent="center" alignItems="center" gap="5px">
+            <Icon w={["24px", "26px", "28px"]} h={["24px", "26px", "28px"]} color={theme.colors.color6} >
+              <BiSolidCoffeeAlt/>
+            </Icon>
 
-
+            <Text
+                fontFamily="'Inter Variable', sans-serif"
+                fontWeight="900"
+                fontSize={["24px", "26px", "28px"]}
+                color={theme.colors.color7}
+              > NUX</Text>
           </Flex>
         </Flex>
 
@@ -360,17 +370,22 @@ export default function DashboardPage() {
                               </NativeSelect.Root>
 
 
-                            <ActionButton 
-                              icon={<CiLogin />}
-                              label={"Sair da Conta"}
-                              mt={"8px"}/>
+                            {
+                              /*<ActionButton 
+                                  icon={<CiLogin />}
+                                  label={"Sair da Conta"}
+                                  mt={"8px"}/> */
+                            }
+                            
 
 
                             <NonColorButton 
                               bg={theme.colors.color3}
                               icon={<CiLogin />}
                               label={"Sair da Conta"}
-                              mt={"8px"}/>
+                              w="100%"
+                              mt="20px"
+                              _hover={{ bg: theme.colors.color2}}/>
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
                             <Switch.Root onCheckedChange={toggleTheme} mt="10px">
