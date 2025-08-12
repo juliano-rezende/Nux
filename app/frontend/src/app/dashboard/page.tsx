@@ -14,6 +14,7 @@ import { CiLogin } from "react-icons/ci";
 import NonColorButton from "@/components/primaries/buttons/NonColorButton";
 import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
 import SideBar from "@/components/walls/dashboard/SideBar";
+import Header from "@/components/walls/dashboard/Header";
 
 
 
@@ -113,7 +114,6 @@ export default function DashboardPage() {
   const [userName, setUserName] = useState<string>('John Doe');
 
   
-
   const {
     theme,
     currentThemeName,
@@ -131,7 +131,7 @@ export default function DashboardPage() {
       h={"100%"}
       flexDirection="row">
 
-        <SideBar logo="/logo.jpg" menuButtons={sidebarMenuData} />
+        <SideBar companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
 
         <Flex h="100%" w="2px" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
 
@@ -140,205 +140,8 @@ export default function DashboardPage() {
           flexGrow={[4, 8, 20]}
           bg={theme.colors.color1}
           flexDirection="column">
-
-            <Flex
-              h="65px"
-              w="100%"
-              bg={theme.colors.color1}
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center">
-
-              <Flex
-                h="100%"
-                pl="20px"
-                bg={theme.colors.color0}
-                justifyContent="center"
-                alignItems="center">
-
-                <Drawer.Root placement={"start"}>
-                  <Drawer.Trigger asChild>
-                    <IconButton display={{base: 'flex', md: 'flex', lg: 'none'}} size="sm" bg={theme.colors.color3} color={theme.colors.onColor3} aria-label="Abrir ">
-                      <RxHamburgerMenu/> 
-                    </IconButton>
-                  </Drawer.Trigger>
-                  <Portal>
-                    <Drawer.Backdrop />
-                    <Drawer.Positioner>
-                      <Drawer.Content>
-
-                        <Drawer.Body p="0px">
-                          <Flex
-                            h="100%"
-                            w="100%"
-                            bg={theme.colors.color2}
-                            flexDirection="column"
-                            alignItems="center"
-                            justifyContent="space-between"
-                            pt="20px"
-                            pb="20px">
-                              <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
-                                <BiSolidCoffeeAlt/>
-                              </Icon>
-
-                              <Text
-                                  fontFamily="'Inter Variable', sans-serif"
-                                  fontWeight="900"
-                                  fontSize={["32px", "36px", "40px"]}
-                                  color={theme.colors.color7}
-                                > NUX</Text>
-                            </Flex>
-                        </Drawer.Body>
-                        <Drawer.CloseTrigger asChild>
-                          <CloseButton size="sm" bg={theme.colors.color3} color={theme.colors.onColor3}/>
-                        </Drawer.CloseTrigger>
-                      </Drawer.Content>
-                    </Drawer.Positioner>
-                  </Portal>
-                </Drawer.Root>
-
-
-              </Flex>
-
-              <Text
-                //fontFamily="'Inter Variable', sans-serif"
-                //fontWeight="500"
-                fontSize={"22px"}
-                color={theme.colors.onColor1}
-              > Olá, {userName}! </Text>
-
-              <Flex
-                h="100%"
-                bg={theme.colors.color0}
-                justifyContent="center"
-                alignItems="center"
-                pr="20px">
-                  <Popover.Root>
-                    <Popover.Trigger asChild>
-                      <IconButtonType1 aria-label="Naruto Form">
-                        <Text fontSize="sm" color={theme.colors.color0}></Text>
-                      </IconButtonType1>
-                    </Popover.Trigger>
-                    <Portal >
-                      <Popover.Positioner>
-
-                        <Popover.Content borderRadius="16px" css={{ "--popover-bg": theme.colors.color4 }}>
-                          <Popover.Arrow />
-                          <Popover.Body>
-
-                            <Popover.Title
-                              fontFamily="'Inter Variable', sans-serif"
-                              color={theme.colors.onColor4}
-                              fontSize="20px"
-                              textAlign="center"
-                              fontWeight="600">
-                              Fazer Login
-                            </Popover.Title>
-
-
-                            <TextP color={theme.colors.onColor4} mt={6}>Nome de usuário:</TextP>
-                            <Input
-                              mt={2}
-                              size="sm"
-                              fontSize="16px"
-                              w="100%"
-                              borderRadius="6px"
-                              color={theme.colors.onColor4}
-                              bg={theme.colors.color4}
-                              borderColor={theme.colors.color1}
-                              placeholder="Digite seu nome de usuário"
-                              _placeholder={{
-                                color: theme.colors.color5,
-                                opacity: 1
-                              }}
-                              focusVisibleRing="outside"
-                              focusRingColor={theme.colors.color6}
-                              focusRingWidth="0px"
-                              focusRingStyle="none"
-                            />
-
-
-
-                            <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Senha:</TextP>
-                            <Input
-                              mt={2}
-                              size="sm"
-                              fontSize="16px"
-                              w="100%"
-                              borderRadius="6px"
-                              color={theme.colors.onColor4}
-                              bg={theme.colors.color4}
-                              borderColor={theme.colors.color1}
-                              placeholder="Digite sua senha"
-                              _placeholder={{
-                                color: theme.colors.color5,
-                                opacity: 1
-                              }}
-                              focusVisibleRing="outside"
-                              focusRingColor={theme.colors.color6}
-                              focusRingWidth="0px"
-                              focusRingStyle="none" />
-
-
-                              <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema Atual</TextP>
-                              <NativeSelect.Root size="md" mt="8px">
-                                <NativeSelect.Field
-                                  onChange={(e) => setPaletteName(e.target.value)}
-                                  value={paletteName}
-                                  fontSize="16px"
-                                  borderRadius="6px"
-                                  color={theme.colors.onColor4}
-                                  bg={theme.colors.color4}
-                                  borderColor={theme.colors.color1}>
-                                  {
-                                    availablePaletteNames.map((palette) => (
-                                      <option style={{
-                                          color: theme.colors.onColor4,
-                                          backgroundColor: theme.colors.color4
-                                        }}
-                                        key={palette} value={palette}>{palette.toUpperCase().slice(0, 1) + palette.slice(1)}
-                                      </option>
-                                    ))
-                                  }
-                                </NativeSelect.Field>
-                                <NativeSelect.Indicator />
-                              </NativeSelect.Root>
-
-
-                            {
-                            /*<ActionButton 
-                                icon={<CiLogin />}
-                                label={"Sair da Conta"}
-                                mt={"8px"}/> */
-                            }
-                            
-
-
-                            <NonColorButton 
-                              bg={theme.colors.color3}
-                              icon={<CiLogin />}
-                              label={"Sair da Conta"}
-                              w="100%"
-                              mt="20px"
-                              color={"#FF0000"}
-                              _hover={{ bg: theme.colors.color2}}/>
-
-
-                            <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
-                            <Switch.Root onCheckedChange={toggleTheme} mt="10px">
-                              <Switch.HiddenInput />
-                              <Switch.Control bg={theme.colors.color6}/>
-                              <Switch.Label color={theme.colors.color5}>Usar tema escuro</Switch.Label>
-                            </Switch.Root>
-
-                          </Popover.Body>
-                        </Popover.Content>
-                      </Popover.Positioner>
-                    </Portal>
-                  </Popover.Root>
-
-              </Flex>
-            </Flex>
+            <Header userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+            
             <Flex w="100%" h="2px" bg={theme.colors.color3}/>
         </Flex>
     </Flex>

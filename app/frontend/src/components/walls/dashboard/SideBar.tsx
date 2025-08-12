@@ -9,13 +9,13 @@ import { BiSolidCoffeeAlt } from "react-icons/bi";
 
 
 export interface SideBar {
-  logo: string;
+  companyLogo: string;
   menuButtons: DynamicMenuListProps[];
 }
 
 
 
-export default function SideBar({ logo, menuButtons }: SideBar) {
+export default function SideBar({ companyLogo, menuButtons }: SideBar) {
     const { theme } = useTheme();
 
     return (
@@ -31,7 +31,7 @@ export default function SideBar({ logo, menuButtons }: SideBar) {
 
           <Flex flexDirection="row" flexGrow={3} alignItems="center" gap="5px">
             <Image
-              src={logo}
+              src={companyLogo}
               alt="Logo"
               w={["32px", "36px", "100px"]}
               h={["32px", "36px", "100px"]}/>
