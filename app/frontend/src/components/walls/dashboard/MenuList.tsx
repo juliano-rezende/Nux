@@ -56,10 +56,10 @@ const RenderMenuItems = (items: MenuItemProps[]) => {
       );
     }
     
-    // Se o item não tem children, ele pode ser um link ou uma ação.
-    // Usamos o onClick para navegar se o href existir.
+
     return (
       <Menu.Item 
+        fontSize={"16px"}
         bg={theme.colors.onColor2} 
         color={theme.colors.color2} 
         _hover={{ 
@@ -113,7 +113,7 @@ export default function DynamicMenuList({ label, icon, items, href }: DynamicMen
 
   // Comportamento original se houver 'items'
   return (
-    <Menu.Root>
+    <Menu.Root positioning={{ placement: "right-start", gutter: 2 }}>
       <Menu.Trigger asChild>
         <Button 
           size="xl" 

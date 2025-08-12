@@ -371,10 +371,10 @@ export default function DashboardPage() {
 
 
                             {
-                              /*<ActionButton 
-                                  icon={<CiLogin />}
-                                  label={"Sair da Conta"}
-                                  mt={"8px"}/> */
+                            /*<ActionButton 
+                                icon={<CiLogin />}
+                                label={"Sair da Conta"}
+                                mt={"8px"}/> */
                             }
                             
 
@@ -385,7 +385,9 @@ export default function DashboardPage() {
                               label={"Sair da Conta"}
                               w="100%"
                               mt="20px"
+                              color={"#FF0000"}
                               _hover={{ bg: theme.colors.color2}}/>
+
 
                             <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema:</TextP>
                             <Switch.Root onCheckedChange={toggleTheme} mt="10px">
