@@ -13,6 +13,7 @@ import ActionButton from "@/components/primaries/buttons/ActionButton";
 import { CiLogin } from "react-icons/ci";
 import NonColorButton from "@/components/primaries/buttons/NonColorButton";
 import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
+import SideBar from "@/components/walls/dashboard/SideBar";
 
 
 
@@ -130,73 +131,7 @@ export default function DashboardPage() {
       h={"100%"}
       flexDirection="row">
 
-        <Flex
-          h="100%"
-          display={{base: 'none', md: 'none', lg: 'flex'}}
-          flexGrow={[1]}
-          bg={theme.colors.color2}
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="space-between">
-
-
-          <Flex flexDirection="row" flexGrow={3} alignItems="center" gap="5px">
-            <Image
-              src="/logo.jpg"
-              alt="Logo"
-              w={["32px", "36px", "100px"]}
-              h={["32px", "36px", "100px"]}/>
-            {/*
-            <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
-              <BiSolidCoffeeAlt/>
-            </Icon>
-
-            <Text
-                fontFamily="'Inter Variable', sans-serif"
-                fontWeight="900"
-                fontSize={["32px", "36px", "40px"]}
-                color={theme.colors.color7}
-              > NUX</Text>
-            */}
-          </Flex>
-
-          <Flex h="2px" w="100%" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
-
-          <Flex
-            w="100%"
-            flexGrow={10}
-            flexDirection="column"
-            alignItems="left"
-            justifyContent="top"
-            pt="30px">
-            {
-              sidebarMenuData.map(item => (
-                <DynamicMenuList
-                  key={item.label}
-                  label={item.label}
-                  icon={item.icon}
-                  items={item.items}
-                  href={item.href}
-                />
-              ))
-            }
-          </Flex>
-
-
-
-          <Flex flexDirection="row" w="100%" flexGrow={3} justifyContent="center" alignItems="center" gap="5px">
-            <Icon w={["24px", "26px", "28px"]} h={["24px", "26px", "28px"]} color={theme.colors.color6} >
-              <BiSolidCoffeeAlt/>
-            </Icon>
-
-            <Text
-                fontFamily="'Inter Variable', sans-serif"
-                fontWeight="900"
-                fontSize={["24px", "26px", "28px"]}
-                color={theme.colors.color7}
-              > NUX</Text>
-          </Flex>
-        </Flex>
+        <SideBar logo="/logo.jpg" menuButtons={sidebarMenuData} />
 
         <Flex h="100%" w="2px" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
 
