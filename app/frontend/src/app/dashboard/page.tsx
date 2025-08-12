@@ -12,13 +12,31 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import TextP from "@/components/primaries/texts/TextP";
 import TextN from "@/components/primaries/texts/TextN";
 import IconButtonType1 from "@/components/primaries/buttons/IconButtonType1";
-import MenuList, { MenuItemData } from "@/components/walls/dashboard/MenuList";
 import DynamicMenuList from "@/components/walls/dashboard/MenuList";
 import { RiArrowRightLine } from "react-icons/ri";
 import ActionButton from "@/components/primaries/buttons/ActionButton";
 import { IoPerson } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import NonColorButton from "@/components/primaries/buttons/NonColorButton";
+import { LuArchive, LuFile, LuFileCode, LuFileText, LuFolder, LuGithub, LuMenu, LuSave } from "react-icons/lu";
+
+
+const menuItems = [
+    { value: 'new-txt', label: 'Novo Arquivo de Texto', icon: <LuFileText /> },
+    { value: 'new-file', label: 'Novo Arquivo...', icon: <LuFile /> },
+    {
+      value: 'open-recent',
+      label: 'Abrir Recentes',
+      icon: <LuFolder />,
+      children: [
+        { value: 'panda', label: 'Panda', icon: <LuGithub /> },
+        { value: 'ark', label: 'Ark UI', icon: <LuArchive /> },
+        { value: 'chakra', label: 'Chakra v3', icon: <LuFileCode /> },
+      ],
+    },
+    { value: 'open-file', label: 'Abrir Arquivo...', icon: <LuFolder /> },
+    { value: 'export', label: 'Exportar', icon: <LuSave /> },
+  ];
 
 
 
@@ -26,6 +44,8 @@ export default function DashboardPage() {
 
   //const { theme, toggleTheme } = useTheme();
   const [userName, setUserName] = useState<string>('John Doe');
+
+  
 
   const {
     theme,
@@ -70,7 +90,11 @@ export default function DashboardPage() {
             w="100%"
             flexGrow={10}
             justifyContent="center">
-
+              
+            <DynamicMenuList
+              label="Ações"
+              icon={<LuFile />}
+              items={menuItems}/>
           </Flex>
 
           <Flex

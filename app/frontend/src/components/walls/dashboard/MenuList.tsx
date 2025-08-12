@@ -1,33 +1,115 @@
-// app/components/DynamicMenuList.tsx
-
 "use client";
 
 import React, { ReactElement } from 'react';
-import Link from 'next/link'; // Importante: para navegação otimizada no Next.js
-import { Menu, Button, MenuItem } from '@chakra-ui/react';
+import { Menu, Button, MenuItem, Portal } from '@chakra-ui/react';
+import { LuChevronRight } from 'react-icons/lu';
+import { useTheme } from '@/context/ThemeContext';
 
-// --- Modelos de Dados ---
-export interface SubMenuItemData {
-  label: string;
-  href: string;
-}
 
-export interface MenuItemData {
+
+// Define a interface para os itens do menu
+interface MenuItemProps {
+  value: string;
   label: string;
-  href?: string;
   icon?: ReactElement;
-  subItems?: SubMenuItemData[];
+  children?: MenuItemProps[];
 }
 
-// --- Props do Componente ---
+
+
+// Props do componente principal
 interface DynamicMenuListProps {
-  items: MenuItemData[];
+  label: string;
+  icon?: ReactElement;
+  items: MenuItemProps[];
 }
 
-// --- O Componente ---
-export default function DynamicMenuList({ items }: DynamicMenuListProps) {
+
+
+// Função recursiva para renderizar os itens do menu e submenus
+const renderMenuItems = (items: MenuItemProps[]) => {
+  
+
+  return items.map((item) => {
+    const { theme } = useTheme();
+
+    if (item.children && item.children.length > 0) {
+      return (
+        <Menu.Root key={item.value} positioning={{ placement: "right-start", gutter: 2 }}>
+          <Menu.TriggerItem 
+            bg={theme.colors.onColor2} 
+            color={theme.colors.color2} 
+            _hover={{ 
+              bg: theme.colors.color2,
+              color: theme.colors.onColor2
+            }}>
+
+            {item.icon}
+            <span style={{ marginLeft: item.icon ? '8px' : '0' }}>{item.label}</span>
+            <LuChevronRight style={{ marginLeft: 'auto' }} />
+          </Menu.TriggerItem >
+          <Portal>
+            <Menu.Positioner>
+              <Menu.Content bg={theme.colors.onColor2}>
+                {renderMenuItems(item.children)}
+              </Menu.Content>
+            </Menu.Positioner>
+          </Portal>
+        </Menu.Root>
+      );
+    }
+
+    
+    return (
+      <Menu.Item 
+        bg={theme.colors.onColor2} 
+        color={theme.colors.color2} 
+        _hover={{ 
+          bg: theme.colors.color2,
+          color: theme.colors.onColor2
+        }}  
+        key={item.value} 
+        value={item.value}>
+        {item.icon}
+        <span style={{ marginLeft: item.icon ? '8px' : '0' }}>{item.label}</span>
+      </Menu.Item>
+    );
+  });
+};
+
+
+
+
+export default function DynamicMenuList({ label, icon, items }: DynamicMenuListProps) {
+  const { theme } = useTheme();
+
   return (
-    // Usamos um Flex para alinhar os botões lado a lado
-    <></>
+    <Menu.Root>
+      <Menu.Trigger asChild>
+        <Button 
+          size="md"
+          w= "90%"
+          bg={theme.colors.onColor2} 
+          color={theme.colors.onColor6} 
+          _hover={{ 
+            bg: theme.colors.color4,
+            color: theme.colors.onColor4
+          }} 
+          _active={{ 
+            bg: theme.colors.color8 
+          }} 
+          _focus={{ boxShadow: "none" }} 
+          borderRadius={"md"} 
+          fontSize={"16px"}>
+          {icon}
+          <span style={{ marginLeft: icon ? '8px' : '0' }}>{label}</span>
+        </Button>
+      </Menu.Trigger>
+      <Portal>
+        <Menu.Positioner >
+          <Menu.Content bg={theme.colors.onColor2}>{renderMenuItems(items)}</Menu.Content>
+        </Menu.Positioner>
+      </Portal>
+    </Menu.Root>
   );
 }
