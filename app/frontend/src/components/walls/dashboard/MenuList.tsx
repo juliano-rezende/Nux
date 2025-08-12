@@ -87,23 +87,23 @@ export default function DynamicMenuList({ label, icon, items }: DynamicMenuListP
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button 
-          size="xl"
-          mt="8px"
-          w= "80%"
-          bg={theme.colors.onColor2} 
-          color={theme.colors.onColor6} 
+          size="xl" 
+          mt="8px" 
+          ml="20px"
+          mr="20px"
+          //w={"0%"} 
+          bg={theme.colors.color0} 
+          color={theme.colors.onColor2} 
           _hover={{ 
             bg: theme.colors.color4,
             color: theme.colors.onColor4
           }} 
-          _active={{ 
-            bg: theme.colors.color8 
-          }} 
-          _focus={{ boxShadow: "none" }} 
           borderRadius={"md"} 
-          fontSize={"16px"}>
+          justifyContent="flex-start" 
+          pl={4} 
+        >
           {icon}
-          <span style={{ marginLeft: icon ? '8px' : '0' }}>{label}</span>
+          {label}
         </Button>
       </Menu.Trigger>
       <Portal>

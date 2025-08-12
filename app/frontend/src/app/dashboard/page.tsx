@@ -124,11 +124,12 @@ export default function DashboardPage() {
         <Flex
           h="100%"
           display={{base: 'none', md: 'none', lg: 'flex'}}
-          flexGrow={[1, 0.8, 0.5]}
+          flexGrow={[1]}
           bg={theme.colors.color2}
           flexDirection="column"
           alignItems="center"
           justifyContent="space-between">
+
 
           <Flex flexDirection="row" flexGrow={1} alignItems="center" gap="5px">
             <Icon w={["32px", "36px", "40px"]} h={["32px", "36px", "40px"]} color={theme.colors.color6}>
@@ -143,11 +144,12 @@ export default function DashboardPage() {
               > NUX</Text>
           </Flex>
 
+
           <Flex
             w="100%"
             flexGrow={10}
             flexDirection="column"
-            alignItems="center"
+            alignItems="left"
             justifyContent="center">
               {
                 menuItems.map(item => (
@@ -159,8 +161,9 @@ export default function DashboardPage() {
                   />
                 ))
               }
-
           </Flex>
+
+
 
           <Flex
             w="100%"
@@ -179,7 +182,7 @@ export default function DashboardPage() {
 
         <Flex
           h="100%"
-          flexGrow={[1, 3, 5]}
+          flexGrow={[4, 8, 20]}
           bg={theme.colors.color1}
           flexDirection="column">
 
