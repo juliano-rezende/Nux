@@ -59,13 +59,13 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
 
 
                 <Flex display={{base: 'none', md: 'none', lg: 'flex'}} flexDirection="row" alignItems="center" gap="10px">
-                    <Icon size="lg" color={theme.colors.onColor8}>
+                    <Icon size="lg" color={theme.colors.onColor2}>
                       {pageNameIcon}
                     </Icon>
                     <Text
                       textStyle="2xl"
                       fontWeight="semibold"
-                      color={theme.colors.onColor8}
+                      color={theme.colors.onColor2}
                       > {pageName}</Text>
                 </Flex>
 

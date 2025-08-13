@@ -15,7 +15,7 @@ export default function IconButtonType1({ icon, ...rest }: IconButtonType1Props)
 
         const iconProps = {
             size: "25px",
-            color: theme.colors.onColor8,
+            color: theme.colors.onColor2,
         };
 
         const renderedIcon = icon
@@ -38,12 +38,12 @@ export default function IconButtonType1({ icon, ...rest }: IconButtonType1Props)
                 cursor="pointer"
                 transition="background-color 0.2s, color 0.2s, border-color 0.2s"
                 _hover={{
-                        bg: theme.colors.color2,
-                        color: theme.colors.onColor2,
-                        borderColor: theme.colors.color3,
+                    bg: theme.colors.color2,
+                    color: theme.colors.onColor2,
+                    borderColor: theme.colors.color3,
                 }}
                 _focus={{
-                        boxShadow: "outline",
+                    boxShadow: "outline",
                 }}
                 {...rest}
                 >
