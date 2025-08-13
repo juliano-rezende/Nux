@@ -29,14 +29,14 @@ const RenderMenuItems = (items: MenuItemProps[]) => {
   const { theme } = useTheme();
 
   return items.map((item) => {
-  
+
     if (item.children && item.children.length > 0) {
       return (
         <Menu.Root key={item.value} positioning={{ placement: "right-start", gutter: 2 }}>
-          <Menu.TriggerItem 
-            bg={theme.colors.onColor2} 
-            color={theme.colors.color2} 
-            _hover={{ 
+          <Menu.TriggerItem
+            bg={theme.colors.onColor2}
+            color={theme.colors.color2}
+            _hover={{
               bg: theme.colors.color2,
               color: theme.colors.onColor2
             }}>
@@ -55,18 +55,18 @@ const RenderMenuItems = (items: MenuItemProps[]) => {
         </Menu.Root>
       );
     }
-    
+
 
     return (
-      <Menu.Item 
+      <Menu.Item
         fontSize={"16px"}
-        bg={theme.colors.onColor2} 
-        color={theme.colors.color2} 
-        _hover={{ 
+        bg={theme.colors.onColor2}
+        color={theme.colors.color2}
+        _hover={{
           bg: theme.colors.color2,
           color: theme.colors.onColor2
-        }}  
-        key={item.value} 
+        }}
+        key={item.value}
         value={item.value}
         onClick={() => item.href && router.push(item.href)} // Navega se href for fornecido
       >
@@ -87,24 +87,24 @@ export default function DynamicMenuList({ label, icon, items, href }: DynamicMen
         router.push(href);
       }
     };
-    
+
     return (
-      <Button 
+      <Button
         onClick={handleNavigation}
         size="xl"
         w="250px"
-        mt="8px" 
+        mt="8px"
         ml="20px"
         mr="20px"
-        bg={theme.colors.color0} 
-        color={theme.colors.onColor2} 
-        _hover={{ 
+        bg={theme.colors.color0}
+        color={theme.colors.onColor2}
+        _hover={{
           bg: theme.colors.color4,
           color: theme.colors.onColor4
-        }} 
-        borderRadius={"md"} 
-        justifyContent="flex-start" 
-        pl={4} 
+        }}
+        borderRadius={"md"}
+        justifyContent="flex-start"
+        pl={4}
         fontSize={"16px"}
       >
         {icon}
@@ -117,20 +117,20 @@ export default function DynamicMenuList({ label, icon, items, href }: DynamicMen
   return (
     <Menu.Root positioning={{ placement: "right-start", gutter: 2 }}>
       <Menu.Trigger asChild>
-        <Button 
-          size="xl" 
-          mt="8px" 
+        <Button
+          size="xl"
+          mt="8px"
           ml="20px"
           mr="20px"
-          bg={theme.colors.color0} 
-          color={theme.colors.onColor2} 
-          _hover={{ 
+          bg={theme.colors.color0}
+          color={theme.colors.onColor2}
+          _hover={{
             bg: theme.colors.color4,
             color: theme.colors.onColor4
-          }} 
-          borderRadius={"md"} 
-          justifyContent="flex-start" 
-          pl={4} 
+          }}
+          borderRadius={"md"}
+          justifyContent="flex-start"
+          pl={4}
           onClick={() => href && router.push(href)}
         >
           {icon}

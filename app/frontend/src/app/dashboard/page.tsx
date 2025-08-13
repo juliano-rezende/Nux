@@ -18,7 +18,7 @@ const sidebarMenuData: DynamicMenuListProps[] = [
     label: "Dashboard",
     icon: <LuLayoutGrid />,
     href: "/dashboard",
-    items: [], 
+    items: [],
   },
   {
     label: "Catálogo Digital",
@@ -107,7 +107,7 @@ export default function DashboardPage() {
   //const { theme, toggleTheme } = useTheme();
   const [userName, setUserName] = useState<string>('John Doe');
 
-  
+
   const {
     theme,
     currentThemeName,
@@ -125,19 +125,19 @@ export default function DashboardPage() {
       h={"100%"}
       flexDirection="row">
 
-        <SideBar display={{base: 'none', md: 'none', lg: 'flex'}} companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+      <SideBar display={{ base: 'none', md: 'none', lg: 'flex' }} companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
 
-        <Flex h="100%" w="2px" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
+      <Flex h="100%" w="2px" display={{ base: 'none', md: 'none', lg: 'flex' }} bg={theme.colors.color3} />
 
-        <Flex
-          h="100%"
-          flexGrow={[4, 8, 20]}
-          bg={theme.colors.color1}
-          flexDirection="column">
-            <Header pageNameIcon={<LuLayoutGrid/>} pageName={"Dashboard"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
-            
-            <Flex w="100%" h="2px" bg={theme.colors.color3}/>
-        </Flex>
+      <Flex
+        h="100%"
+        flexGrow={[4, 8, 20]}
+        bg={theme.colors.color1}
+        flexDirection="column">
+        <Header pageNameIcon={<LuLayoutGrid />} pageName={"Dashboard"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+
+        <Flex w="100%" h="2px" bg={theme.colors.color3} />
+      </Flex>
     </Flex>
   );
 }
