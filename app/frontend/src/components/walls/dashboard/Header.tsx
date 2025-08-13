@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ReactElement } from "react";
-import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, Icon, CloseButton, Drawer, IconButton, Input, NativeSelect, Popover, Portal, Switch } from "@chakra-ui/react";
+import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, CloseButton, Drawer, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Box, Circle, Float, Avatar, Badge } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
 import DynamicMenuList, { DynamicMenuListProps } from "./MenuList";
 import { BiSolidCoffeeAlt } from "react-icons/bi";
@@ -11,6 +11,8 @@ import TextP from "@/components/primaries/texts/TextP";
 import { CiLogin } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SideBar from "./SideBar";
+import { IoMdNotifications } from "react-icons/io";
+import { IoPerson } from "react-icons/io5";
 
 
 
@@ -34,6 +36,8 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
         setPaletteName,
         availablePaletteNames
     } = useTheme();
+
+    const [notifications, setNotifications] = React.useState<number>(3);
 
 
     return (
@@ -105,9 +109,25 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 justifyContent="center"
                 alignItems="center"
                 pr="20px">
+
+
+                <Box display="inline-block" pos="relative" mr="8px" p={"-8px"}>
+                  <IconButtonType1 icon={<IoMdNotifications/>} aria-label="Notificações"/>
+
+                  <Float placement={"top-start"}>
+                    <Circle size="5" bg="red" color="white">
+                      {notifications}
+                    </Circle>
+                  </Float>
+                </Box>
+                
+
+                
+
+                 
                   <Popover.Root>
                     <Popover.Trigger asChild>
-                      <IconButtonType1 aria-label="Naruto Form">
+                      <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil">
                         <Text fontSize="sm" color={theme.colors.color0}></Text>
                       </IconButtonType1>
                     </Popover.Trigger>

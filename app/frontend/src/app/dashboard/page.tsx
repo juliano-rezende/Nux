@@ -1,21 +1,14 @@
 "use client";
 
-import { Button, CloseButton, Drawer, Flex, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Text, Image } from "@chakra-ui/react";
+import { Button, CloseButton, Drawer, Flex } from "@chakra-ui/react";
 import { useTheme } from "@/context/ThemeContext";
 import React, { useState } from 'react';
-import { BiSolidCoffeeAlt } from "react-icons/bi";
-import { RxHamburgerMenu } from "react-icons/rx";
-import TextP from "@/components/primaries/texts/TextP";
-import TextN from "@/components/primaries/texts/TextN";
-import IconButtonType1 from "@/components/primaries/buttons/IconButtonType1";
 import DynamicMenuList, { DynamicMenuListProps } from "@/components/walls/dashboard/MenuList";
-import ActionButton from "@/components/primaries/buttons/ActionButton";
-import { CiLogin } from "react-icons/ci";
-import NonColorButton from "@/components/primaries/buttons/NonColorButton";
-import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuClipboardList, LuFile, LuFileCode, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
+import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuFileSpreadsheet, LuFileText, LuFolder, LuGithub, LuLayoutDashboard, LuLayoutGrid, LuLogOut, LuMenu, LuMonitor, LuSave, LuSettings, LuShield, LuSquareStack, LuTable, LuTruck, LuUser, LuUsers } from "react-icons/lu";
 import SideBar from "@/components/walls/dashboard/SideBar";
 import Header from "@/components/walls/dashboard/Header";
 import { TiHomeOutline } from "react-icons/ti";
+
 
 
 
