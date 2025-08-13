@@ -132,7 +132,7 @@ export default function DashboardPage() {
       h={"100%"}
       flexDirection="row">
 
-        <SideBar companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+        <SideBar display={{base: 'none', md: 'none', lg: 'flex'}} companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
 
         <Flex h="100%" w="2px" display={{base: 'none', md: 'none', lg: 'flex'}}  bg={theme.colors.color3}/>
 

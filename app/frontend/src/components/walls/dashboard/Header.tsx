@@ -52,19 +52,15 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 justifyContent="center"
                 alignItems="center">
 
-                <Flex flexDirection="row" alignItems="center" gap="10px">
-                    
-                    <Icon size="lg" color={theme.colors.color6}>
-                        {pageNameIcon}
+                <Flex display={{base: 'none', md: 'none', lg: 'flex'}} flexDirection="row" alignItems="center" gap="10px">
+                    <Icon size="lg" color={theme.colors.onColor8}>
+                      {pageNameIcon}
                     </Icon>
                     <Text
-                    //fontFamily="'Inter Variable', sans-serif"
-                    textStyle="2xl"
-                    fontWeight="semibold"
-                    display={{base: 'none', md: 'none', lg: 'flex'}}
-                    color={theme.colors.onColor1}
-                    > {pageName}</Text>
-                
+                      textStyle="2xl"
+                      fontWeight="semibold"
+                      color={theme.colors.onColor8}
+                      > {pageName}</Text>
                 </Flex>
 
 
@@ -78,9 +74,8 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                     <Drawer.Backdrop />
                     <Drawer.Positioner>
                       <Drawer.Content>
-
                         <Drawer.Body p="0px">
-                          <SideBar companyLogo={companyLogo} menuButtons={menuButtons} />
+                          <SideBar companyLogo={companyLogo} menuButtons={menuButtons}/>
                         </Drawer.Body>
                         <Drawer.CloseTrigger asChild>
                           <CloseButton size="sm" bg={theme.colors.color3} color={theme.colors.onColor3}/>

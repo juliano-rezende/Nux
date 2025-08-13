@@ -1,27 +1,27 @@
 "use client";
 
 import React from "react";
-import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, Icon } from "@chakra-ui/react";
+import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, Icon, FlexProps } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
 import DynamicMenuList, { DynamicMenuListProps } from "./MenuList";
 import { BiSolidCoffeeAlt } from "react-icons/bi";
 
 
 
-export interface SideBar {
+export interface SideBarProps extends FlexProps {
   companyLogo: string;
   menuButtons: DynamicMenuListProps[];
 }
 
 
 
-export default function SideBar({ companyLogo, menuButtons }: SideBar) {
+export default function SideBar({ companyLogo, menuButtons, ...rest }: SideBarProps) {
     const { theme } = useTheme();
 
     return (
         <Flex
           h="100%"
-          display={{base: 'none', md: 'none', lg: 'flex'}}
+          display={ rest.display || 'flex'}
           flexGrow={[1]}
           bg={theme.colors.color2}
           flexDirection="column"
