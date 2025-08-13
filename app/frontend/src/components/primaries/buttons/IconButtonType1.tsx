@@ -1,11 +1,9 @@
 "use client";
 
-
-import React, { ReactElement } from "react";
+import React, { ReactElement, cloneElement } from "react";
 import { Flex, FlexProps } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
 import { IoPerson } from "react-icons/io5";
-
 
 export interface IconButtonType1Props extends FlexProps {
     icon?: ReactElement;
@@ -13,6 +11,12 @@ export interface IconButtonType1Props extends FlexProps {
 
 export default function IconButtonType1({ icon, ...rest }: IconButtonType1Props) {
     const { theme } = useTheme();
+
+    const defaultIcon = <IoPerson />;
+
+    const iconToRender = icon || defaultIcon;
+
+    const sizedIcon = cloneElement(iconToRender, { size: "22px" });
 
     return (
         <Flex
@@ -38,7 +42,7 @@ export default function IconButtonType1({ icon, ...rest }: IconButtonType1Props)
             }}
             {...rest}
         >
-            {icon || <IoPerson size={"22px"} />}
+            {sizedIcon}
         </Flex>
-    );
-};                                                                  
+    )
+}

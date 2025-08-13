@@ -113,10 +113,6 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
             color={theme.colors.onColor2} />
         </InputGroup>
 
-        <IconButtonType1 icon={<IoPerson />} aria-label="Perfil" />
-        <IconButtonType1 aria-label="Perfil" />
-        <IconButtonType1 icon={<RxHamburgerMenu />} aria-label="Perfil" />
-        <IconButtonType1 icon={<IoPerson />} aria-label="Perfil" />
 
         <Box display="inline-block" pos="relative" mr="8px" >
           <IconButtonType1 icon={<IoIosNotifications />} aria-label="Notificações" />
