@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ReactElement } from "react";
-import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, CloseButton, Drawer, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Box, Circle, Float, Avatar, Badge } from "@chakra-ui/react";
+import { Button, ButtonProps as ChakraButtonProps, Flex, Text, Image, CloseButton, Drawer, Icon, IconButton, Input, NativeSelect, Popover, Portal, Switch, Box, Circle, Float, Avatar, Badge, InputGroup } from "@chakra-ui/react";
 import { useTheme } from '@/context/ThemeContext';
 import DynamicMenuList, { DynamicMenuListProps } from "./MenuList";
 import { BiSolidCoffeeAlt } from "react-icons/bi";
@@ -11,8 +11,9 @@ import TextP from "@/components/primaries/texts/TextP";
 import { CiLogin } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SideBar from "./SideBar";
-import { IoMdNotifications } from "react-icons/io";
+import { IoIosNotifications, IoMdNotifications } from "react-icons/io";
 import { IoPerson } from "react-icons/io5";
+import { LuSearch, LuUser } from "react-icons/lu";
 
 
 
@@ -55,6 +56,7 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 bg={theme.colors.color0}
                 justifyContent="center"
                 alignItems="center">
+
 
                 <Flex display={{base: 'none', md: 'none', lg: 'flex'}} flexDirection="row" alignItems="center" gap="10px">
                     <Icon size="lg" color={theme.colors.onColor8}>
@@ -100,7 +102,6 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 fontStyle={"italic"}
                 color={theme.colors.onColor1}
                 > Olá, {userName}! </Text>
-
             */}
               
               <Flex
@@ -108,11 +109,22 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 bg={theme.colors.color0}
                 justifyContent="center"
                 alignItems="center"
+                flexDirection={"row"}
                 pr="20px">
 
+                <InputGroup mr="20px" startElement={<LuSearch />}>
+                  <Input 
+                  borderColor={theme.colors.color4} 
+                  _focusVisible={{
+                    boxShadow: "0 0 0 1px " + theme.colors.color4,
+                    borderColor: theme.colors.color4,
+                  }}
+                  placeholder="Pesquisar" 
+                  color={theme.colors.onColor2}/>
+                </InputGroup>
 
-                <Box display="inline-block" pos="relative" mr="8px" p={"-8px"}>
-                  <IconButtonType1 icon={<IoMdNotifications/>} aria-label="Notificações"/>
+                <Box display="inline-block" pos="relative" mr="8px" >
+                  <IconButtonType1 icon={<IoIosNotifications/>} aria-label="Notificações"/>
 
                   <Float placement={"top-start"}>
                     <Circle size="5" bg="red" color="white">
@@ -120,11 +132,7 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                     </Circle>
                   </Float>
                 </Box>
-                
-
-                
-
-                 
+                  
                   <Popover.Root>
                     <Popover.Trigger asChild>
                       <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil">
