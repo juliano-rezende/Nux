@@ -68,6 +68,7 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
             color={theme.colors.onColor2}
           > {pageName}</Text>
         </Flex>
+        
 
 
         <Drawer.Root placement={"start"}>
@@ -125,12 +126,12 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
         </Box>
 
         <Popover.Root>
-          <Popover.Trigger asChild>
+          <Popover.Trigger asChild >
             <IconButtonType1 icon={<IoPerson />} aria-label="Perfil" />
           </Popover.Trigger>
           <Portal >
             <Popover.Positioner>
-              <Popover.Content borderRadius="12px" css={{ "--popover-bg": theme.colors.color4 }}>
+              <Popover.Content borderRadius="12px" css={{ '--popover-bg': theme.colors.color2}}>
                 <Popover.Arrow />
                 <Popover.Body>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, CloseButton, Drawer, Flex } from "@chakra-ui/react";
+import { Button, CloseButton, Drawer, Flex, Stat } from "@chakra-ui/react";
 import { useTheme } from "@/context/ThemeContext";
 import React, { useState } from 'react';
 import DynamicMenuList, { DynamicMenuListProps } from "@/components/walls/dashboard/MenuList";
@@ -134,9 +134,33 @@ export default function DashboardPage() {
         flexGrow={[4, 8, 20]}
         bg={theme.colors.color1}
         flexDirection="column">
-        <Header pageNameIcon={<LuLayoutGrid />} pageName={"Dashboard"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
 
+        <Header pageNameIcon={<LuLayoutGrid />} pageName={"Dashboard"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
         <Flex w="100%" h="2px" bg={theme.colors.color3} />
+
+
+        {/* Conteúdo principal da página */}
+        <Flex w="100%" h="100%" p="20px" bg={theme.colors.color0}>
+
+          <Flex p="20px" h="130px" flexDirection="row" gap="20px" >
+            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px">
+              <Stat.Root>
+                <Stat.Label>Faturamento Hoje</Stat.Label>
+                <Stat.ValueText>R$192,00</Stat.ValueText>
+              </Stat.Root>
+            </Flex>
+
+            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px">
+              <Stat.Root>
+                <Stat.Label>Faturamento Hoje</Stat.Label>
+                <Stat.ValueText>R$192,00</Stat.ValueText>
+              </Stat.Root>
+            </Flex>
+          </Flex>
+
+
+
+        </Flex>
       </Flex>
     </Flex>
   );
