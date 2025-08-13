@@ -22,7 +22,7 @@ export default function SideBar({ companyLogo, menuButtons, ...rest }: SideBarPr
         <Flex
           h="100%"
           display={ rest.display || 'flex'}
-          flexGrow={[1]}
+          //flexGrow={[]}
           bg={theme.colors.color2}
           flexDirection="column"
           alignItems="center"

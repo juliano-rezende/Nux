@@ -134,7 +134,7 @@ export default function DashboardPage() {
           flexGrow={[4, 8, 20]}
           bg={theme.colors.color1}
           flexDirection="column">
-            <Header pageNameIcon={<TiHomeOutline/>} pageName={"Início"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
+            <Header pageNameIcon={<LuLayoutGrid/>} pageName={"Dashboard"} userName="João" companyLogo="/logo.jpg" menuButtons={sidebarMenuData} />
             
             <Flex w="100%" h="2px" bg={theme.colors.color3}/>
         </Flex>

@@ -91,7 +91,8 @@ export default function DynamicMenuList({ label, icon, items, href }: DynamicMen
     return (
       <Button 
         onClick={handleNavigation}
-        size="xl" 
+        size="xl"
+        w="250px"
         mt="8px" 
         ml="20px"
         mr="20px"
@@ -104,6 +105,7 @@ export default function DynamicMenuList({ label, icon, items, href }: DynamicMen
         borderRadius={"md"} 
         justifyContent="flex-start" 
         pl={4} 
+        fontSize={"16px"}
       >
         {icon}
         {label}

@@ -43,7 +43,7 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
 
     return (
         <Flex
-              h="65px"
+              h="93px"
               w="100%"
               bg={theme.colors.color1}
               flexDirection="row"
@@ -57,13 +57,12 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 justifyContent="center"
                 alignItems="center">
 
-
                 <Flex display={{base: 'none', md: 'none', lg: 'flex'}} flexDirection="row" alignItems="center" gap="10px">
-                    <Icon size="lg" color={theme.colors.onColor2}>
+                    <Icon w="28px" h="28px" color={theme.colors.onColor2}>
                       {pageNameIcon}
                     </Icon>
                     <Text
-                      textStyle="2xl"
+                      fontSize={"28px"}
                       fontWeight="semibold"
                       color={theme.colors.onColor2}
                       > {pageName}</Text>
@@ -112,16 +111,21 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                 flexDirection={"row"}
                 pr="20px">
 
-                <InputGroup mr="20px" startElement={<LuSearch />}>
+                <InputGroup mr="28px" startElement={<LuSearch />}>
                   <Input 
-                  borderColor={theme.colors.color4} 
-                  _focusVisible={{
-                    boxShadow: "0 0 0 1px " + theme.colors.color4,
-                    borderColor: theme.colors.color4,
-                  }}
-                  placeholder="Pesquisar" 
-                  color={theme.colors.onColor2}/>
+                    borderColor={theme.colors.color4} 
+                    _focusVisible={{
+                      boxShadow: "0 0 0 1px " + theme.colors.color4,
+                      borderColor: theme.colors.color4,
+                    }}
+                    placeholder="Pesquisar" 
+                    color={theme.colors.onColor2}/>
                 </InputGroup>
+
+                <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil"/>
+                <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil"/>
+                <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil"/>
+                <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil"/>
 
                 <Box display="inline-block" pos="relative" mr="8px" >
                   <IconButtonType1 icon={<IoIosNotifications/>} aria-label="Notificações"/>
@@ -133,105 +137,28 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                   </Float>
                 </Box>
                   
+
+
+
+
                   <Popover.Root>
                     <Popover.Trigger asChild>
-                      <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil">
-                        <Text fontSize="sm" color={theme.colors.color0}></Text>
-                      </IconButtonType1>
+                      <IconButtonType1 icon={<IoPerson/>}  aria-label="Perfil"/>
                     </Popover.Trigger>
                     <Portal >
                       <Popover.Positioner>
-
-                        <Popover.Content borderRadius="16px" css={{ "--popover-bg": theme.colors.color4 }}>
+                        <Popover.Content borderRadius="12px" css={{"--popover-bg": theme.colors.color4 }}>
                           <Popover.Arrow />
                           <Popover.Body>
+                            
 
                             <Popover.Title
-                              fontFamily="'Inter Variable', sans-serif"
                               color={theme.colors.onColor4}
-                              fontSize="20px"
+                              fontSize="22px"
                               textAlign="center"
                               fontWeight="600">
-                              Fazer Login
+                              Olá, {userName}!
                             </Popover.Title>
-
-
-                            <TextP color={theme.colors.onColor4} mt={6}>Nome de usuário:</TextP>
-                            <Input
-                              mt={2}
-                              size="sm"
-                              fontSize="16px"
-                              w="100%"
-                              borderRadius="6px"
-                              color={theme.colors.onColor4}
-                              bg={theme.colors.color4}
-                              borderColor={theme.colors.color1}
-                              placeholder="Digite seu nome de usuário"
-                              _placeholder={{
-                                color: theme.colors.color5,
-                                opacity: 1
-                              }}
-                              focusVisibleRing="outside"
-                              focusRingColor={theme.colors.color6}
-                              focusRingWidth="0px"
-                              focusRingStyle="none"
-                            />
-
-
-
-                            <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Senha:</TextP>
-                            <Input
-                              mt={2}
-                              size="sm"
-                              fontSize="16px"
-                              w="100%"
-                              borderRadius="6px"
-                              color={theme.colors.onColor4}
-                              bg={theme.colors.color4}
-                              borderColor={theme.colors.color1}
-                              placeholder="Digite sua senha"
-                              _placeholder={{
-                                color: theme.colors.color5,
-                                opacity: 1
-                              }}
-                              focusVisibleRing="outside"
-                              focusRingColor={theme.colors.color6}
-                              focusRingWidth="0px"
-                              focusRingStyle="none" />
-
-
-                              <TextP color={theme.colors.onColor4} mt={6} fontSize="16px">Selecione o tema Atual</TextP>
-                              <NativeSelect.Root size="md" mt="8px">
-                                <NativeSelect.Field
-                                  onChange={(e) => setPaletteName(e.target.value)}
-                                  value={paletteName}
-                                  fontSize="16px"
-                                  borderRadius="6px"
-                                  color={theme.colors.onColor4}
-                                  bg={theme.colors.color4}
-                                  borderColor={theme.colors.color1}>
-                                  {
-                                    availablePaletteNames.map((palette) => (
-                                      <option style={{
-                                          color: theme.colors.onColor4,
-                                          backgroundColor: theme.colors.color4
-                                        }}
-                                        key={palette} value={palette}>{palette.toUpperCase().slice(0, 1) + palette.slice(1)}
-                                      </option>
-                                    ))
-                                  }
-                                </NativeSelect.Field>
-                                <NativeSelect.Indicator />
-                              </NativeSelect.Root>
-
-
-                            {
-                            /*<ActionButton 
-                                icon={<CiLogin />}
-                                label={"Sair da Conta"}
-                                mt={"8px"}/> */
-                            }
-                            
 
 
                             <NonColorButton 
@@ -239,7 +166,7 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                               icon={<CiLogin />}
                               label={"Sair da Conta"}
                               w="100%"
-                              mt="20px"
+                              mt="100px"
                               color={"#FF0000"}
                               _hover={{ bg: theme.colors.color2}}/>
 
@@ -256,7 +183,6 @@ export default function Header({ companyLogo, userName, pageNameIcon, pageName, 
                       </Popover.Positioner>
                     </Portal>
                   </Popover.Root>
-
               </Flex>
             </Flex>
     );
