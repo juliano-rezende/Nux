@@ -1,0 +1,46 @@
+_format_version: "3.0"
+_transform: true
+
+consumers:
+  - username: keycloak-realm
+    custom_id: local-realm
+
+jwt_secrets:
+  - consumer: keycloak-realm
+    algorithm: RS256
+    key: "http://localhost:8081/realms/nux"
+    rsa_public_key: |
+      -----BEGIN PUBLIC KEY-----
+      PASTE_A_PUBLIC_KEY_DO_REALM_AQUI
+      -----END PUBLIC KEY-----
+
+services:
+  - name: nux-bff
+    url: ${NUX_BFF_URL}
+    routes:
+      - name: bff-route
+        paths: ["/api/bff"]
+        strip_path: true
+        methods: ["GET","POST","PUT","PATCH","DELETE"]
+    plugins:
+      - name: jwt
+        config:
+          run_on_preflight: true
+          claims_to_verify:
+            - exp
+          key_claim_name: iss # usamos iss (emissor), mas a chave é única aqui
+
+  - name: nux-core
+    url: ${NUX_CORE_URL}
+    routes:
+      - name: core-route
+        paths: ["/api/core"]
+        strip_path: true
+        methods: ["GET","POST","PUT","PATCH","DELETE"]
+    plugins:
+      - name: jwt
+        config:
+          run_on_preflight: true
+          claims_to_verify:
+            - exp
+          key_claim_name: iss

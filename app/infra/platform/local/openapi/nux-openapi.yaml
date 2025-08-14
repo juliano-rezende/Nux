@@ -1,0 +1,419 @@
+openapi: 3.1.0
+info:
+  title: SaaS Restaurants Platform API
+  version: "1.0.0"
+  description: >
+    API Gateway contract for the multi-tenant Restaurants & Bars platform.
+    Auth via Bearer JWT issued by your IdP. All endpoints are versioned under /api/v1 except /auth.
+
+servers:
+  - url: http://localhost:8000
+    description: Kong Proxy (local)
+  - url: https://api.seudominio.com
+    description: Production (gateway)
+
+tags:
+  - name: auth
+  - name: companies
+  - name: users
+  - name: plans
+  - name: subscriptions
+  - name: invoices
+  - name: modules
+  - name: company-modules
+  - name: user-modules
+  - name: products
+  - name: product-categories
+  - name: orders
+  - name: payments
+  - name: customers
+  - name: tables
+  - name: tabs
+  - name: tab-items
+  - name: stock
+  - name: stock-movements
+  - name: reports
+  - name: company-settings
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/token:
+    post:
+      tags: [auth]
+      summary: Issue JWT token (mock)
+      security: []   # público (ex.: seu IdP)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  enum: [password, client_credentials, refresh_token]
+                username:
+                  type: string
+                password:
+                  type: string
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+      responses:
+        "200":
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: { type: string }
+                  token_type: { type: string, example: Bearer }
+                  expires_in: { type: integer, example: 3600 }
+                  refresh_token: { type: string }
+
+  /api/v1/companies:
+    get:
+      tags: [companies]
+      summary: List companies
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        "200":
+          description: List of companies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCompany'
+    post:
+      tags: [companies]
+      summary: Create company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CompanyCreate' }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Company' }
+
+  /api/v1/companies/{companyId}:
+    get:
+      tags: [companies]
+      summary: Get company by id
+      parameters: [ { $ref: '#/components/parameters/companyId' } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Company' }
+    patch:
+      tags: [companies]
+      summary: Update company
+      parameters: [ { $ref: '#/components/parameters/companyId' } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CompanyUpdate' }
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Company' }
+    delete:
+      tags: [companies]
+      summary: Soft delete company
+      parameters: [ { $ref: '#/components/parameters/companyId' } ]
+      responses:
+        "204": { description: Deleted }
+
+  /api/v1/users:
+    get:
+      tags: [users]
+      summary: List users
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginatedUser' }
+    post:
+      tags: [users]
+      summary: Create user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/UserCreate' }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/User' }
+
+  /api/v1/plans:
+    get:
+      tags: [plans]
+      summary: List plans
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginatedPlan' }
+    post:
+      tags: [plans]
+      summary: Create plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PlanCreate' }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Plan' }
+
+  /api/v1/subscriptions:
+    get:
+      tags: [subscriptions]
+      summary: List subscriptions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginatedSubscription' }
+    post:
+      tags: [subscriptions]
+      summary: Create subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SubscriptionCreate' }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Subscription' }
+
+  /api/v1/invoices:
+    get:
+      tags: [invoices]
+      summary: List invoices
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginatedInvoice' }
+
+# ... (continue adicionando os demais recursos conforme necessário)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    page:
+      name: page
+      in: query
+      schema: { type: integer, minimum: 1, default: 1 }
+    size:
+      name: size
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 200, default: 20 }
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+
+  schemas:
+    # ---- Base
+    Timestamps:
+      type: object
+      properties:
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+        deleted_at: { type: string, format: date-time, nullable: true }
+
+    PaginatedMeta:
+      type: object
+      properties:
+        page: { type: integer }
+        size: { type: integer }
+        total: { type: integer }
+
+    # ---- Company
+    CompanyBase:
+      type: object
+      properties:
+        name: { type: string }
+        cnpj: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        address: { type: string }
+        segment: { type: string }
+        status: { type: string }
+
+    Company:
+      allOf:
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+        - $ref: '#/components/schemas/CompanyBase'
+        - $ref: '#/components/schemas/Timestamps'
+
+    CompanyCreate:
+      allOf:
+        - $ref: '#/components/schemas/CompanyBase'
+    CompanyUpdate:
+      allOf:
+        - $ref: '#/components/schemas/CompanyBase'
+
+    PaginatedCompany:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Company' }
+        meta: { $ref: '#/components/schemas/PaginatedMeta' }
+
+    # ---- Users
+    UserBase:
+      type: object
+      properties:
+        name: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        active: { type: boolean }
+
+    User:
+      allOf:
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+        - $ref: '#/components/schemas/UserBase'
+        - $ref: '#/components/schemas/Timestamps'
+
+    UserCreate:
+      allOf:
+        - $ref: '#/components/schemas/UserBase'
+      required: [email]
+
+    PaginatedUser:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/User' }
+        meta: { $ref: '#/components/schemas/PaginatedMeta' }
+
+    # ---- Plans
+    PlanBase:
+      type: object
+      properties:
+        name: { type: string }
+        description: { type: string }
+        monthly_price: { type: number, format: float }
+        annual_price: { type: number, format: float }
+        billing_period: { type: string, enum: [monthly, annual] }
+        status: { type: string, enum: [active, inactive] }
+        features:
+          type: object
+          additionalProperties: true
+
+    Plan:
+      allOf:
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+        - $ref: '#/components/schemas/PlanBase'
+        - $ref: '#/components/schemas/Timestamps'
+
+    PlanCreate:
+      allOf:
+        - $ref: '#/components/schemas/PlanBase'
+
+    PaginatedPlan:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Plan' }
+        meta: { $ref: '#/components/schemas/PaginatedMeta' }
+
+    # ---- Subscriptions
+    SubscriptionBase:
+      type: object
+      properties:
+        company_id: { type: string, format: uuid }
+        plan_id: { type: string, format: uuid }
+        status: { type: string, enum: [active, suspended, canceled, expired, trial] }
+        billing_cycle: { type: string, enum: [monthly, annual, custom] }
+        recurring: { type: boolean }
+        next_billing_date: { type: string, format: date-time }
+
+    Subscription:
+      allOf:
+        - type: object
+          properties:
+            id: { type: string, format: uuid }
+        - $ref: '#/components/schemas/SubscriptionBase'
+        - $ref: '#/components/schemas/Timestamps'
+
+    SubscriptionCreate:
+      allOf:
+        - $ref: '#/components/schemas/SubscriptionBase'
+
+    PaginatedSubscription:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Subscription' }
+        meta: { $ref: '#/components/schemas/PaginatedMeta' }
+
+    # ---- Invoices
+    Invoice:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        company_id: { type: string, format: uuid }
+        contract_id: { type: string, format: uuid }
+        subscription_id: { type: string, format: uuid, nullable: true }
+        amount: { type: number, format: float }
+        status: { type: string, enum: [open, paid, overdue, canceled] }
+        due_date: { type: string, format: date-time }
+        payment_date: { type: string, format: date-time, nullable: true }
+        nfe_url: { type: string, nullable: true }
+
+    PaginatedInvoice:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Invoice' }
+        meta: { $ref: '#/components/schemas/PaginatedMeta' }

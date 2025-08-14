@@ -1,0 +1,132 @@
+{
+  "realm": "nux",
+  "enabled": true,
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+
+  "roles": {
+    "realm": [
+      { "name": "dashboard.read" },
+      { "name": "dashboard.write" },
+
+      { "name": "orders.read" },
+      { "name": "orders.write" },
+
+      { "name": "catalog.read" },
+      { "name": "catalog.write" },
+
+      { "name": "pos.read" },
+      { "name": "pos.write" },
+
+      { "name": "reports.read" },
+      { "name": "reports.write" }
+    ]
+  },
+
+  "clients": [
+    {
+      "clientId": "nux-bff",
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "bearerOnly": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": ["http://localhost:3001/*"],
+      "webOrigins": ["http://localhost:3001"]
+    },
+    {
+      "clientId": "nux-api-core",
+      "protocol": "openid-connect",
+      "bearerOnly": true, 
+      "publicClient": false,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false
+    }
+  ],
+
+  "clientScopes": [
+    {
+      "name": "nux-context",
+      "description": "Contexto NUX (tenant e grupos)",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "company_id",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "active_company_id",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "company_id",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "full.path": "true",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "groups"
+          }
+        }
+      ]
+    }
+  ],
+
+  "defaultDefaultClientScopes": [
+    "web-origins", "roles", "profile", "email", "nux-context"
+  ],
+
+  "groups": [
+    {
+      "name": "company:uuid-company-1",
+      "attributes": {
+        "companyId": ["uuid-company-1"],
+        "companyName": ["Acme Bar & Grill"]
+      },
+      "realmRoles": ["dashboard.read", "orders.read"]
+    }
+  ],
+
+  "users": [
+    {
+      "username": "root@local",
+      "email": "root@local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Root",
+      "lastName": "Local",
+      "attributes": {
+        "active_company_id": ["uuid-company-1"]
+      },
+      "groups": [
+        "/company:uuid-company-1"
+      ],
+      "realmRoles": ["dashboard.write"],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "change123",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
