@@ -8,6 +8,8 @@ import { LuArchive, LuBook, LuBookOpen, LuBox, LuChefHat, LuFileSpreadsheet, LuF
 import SideBar from "@/components/walls/dashboard/SideBar";
 import Header from "@/components/walls/dashboard/Header";
 import { TiHomeOutline } from "react-icons/ti";
+import { MdAttachMoney } from "react-icons/md";
+import { IoMdRestaurant } from "react-icons/io";
 
 
 
@@ -104,8 +106,9 @@ const sidebarMenuData: DynamicMenuListProps[] = [
 
 export default function DashboardPage() {
 
-  //const { theme, toggleTheme } = useTheme();
   const [userName, setUserName] = useState<string>('John Doe');
+  const [todayInvoicing, setTodayInvoicing] = useState<string>("192.40".replace('.', ','));
+  const [totaInvoicing, setTotaInvoicing] = useState<string>("4853.93".replace('.', ','));
 
 
   const {
@@ -142,24 +145,31 @@ export default function DashboardPage() {
         {/* Conteúdo principal da página */}
         <Flex w="100%" h="100%" p="20px" bg={theme.colors.color0}>
 
-          <Flex p="20px" h="130px" flexDirection="row" gap="20px" >
-            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px">
+          <Flex p="20px" h="130px" flexDirection="row" gap="25px" >
+            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px" alignItems={"center"} >
+              <MdAttachMoney size="50px"/>
               <Stat.Root>
                 <Stat.Label>Faturamento Hoje</Stat.Label>
-                <Stat.ValueText>R$192,00</Stat.ValueText>
+                <Stat.ValueText>R${todayInvoicing}</Stat.ValueText>
               </Stat.Root>
             </Flex>
 
-            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px">
+            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px" alignItems={"center"} >
+              <MdAttachMoney size="50px"/>
               <Stat.Root>
-                <Stat.Label>Faturamento Hoje</Stat.Label>
-                <Stat.ValueText>R$192,00</Stat.ValueText>
+                <Stat.Label>Faturamento Total</Stat.Label>
+                <Stat.ValueText>R${totaInvoicing}</Stat.ValueText>
+              </Stat.Root>
+            </Flex>
+
+            <Flex p="20px" bg={theme.colors.color2} borderRadius="12px" alignItems={"center"} >
+              <IoMdRestaurant size="50px"/>
+              <Stat.Root>
+                <Stat.Label>Faturamento Total</Stat.Label>
+                <Stat.ValueText>R${totaInvoicing}</Stat.ValueText>
               </Stat.Root>
             </Flex>
           </Flex>
-
-
-
         </Flex>
       </Flex>
     </Flex>
